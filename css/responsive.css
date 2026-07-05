@@ -1,0 +1,143 @@
+/* ==========================================================================
+   HBM4/HBM4E Interactive Presentation Showcase - Responsive Stylesheet
+   ========================================================================== */
+
+@media screen and (max-height: 800px) {
+  .slide {
+    padding: calc(var(--navbar-height) + 10px) 30px 80px 30px;
+  }
+  
+  .slide-header {
+    margin-bottom: 15px;
+  }
+  
+  .slide-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-slide-text h1 {
+    font-size: 2.5rem;
+    min-height: 80px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .nav-links {
+    gap: 10px;
+  }
+  
+  .nav-links a {
+    font-size: 0.72rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: var(--navbar-height);
+    right: -100%;
+    width: 100vw;
+    height: calc(100vh - var(--navbar-height));
+    background: rgba(5, 8, 22, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    transition: var(--transition-smooth);
+    border-top: 1px solid var(--card-border);
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+  }
+
+  /* Hamburger transform styles */
+  .hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+
+  /* Stacks layouts vertically */
+  .slide-grid-2,
+  .hero-slide-layout,
+  .arch-grid-layout,
+  .tsv-three-cards,
+  .stack-explorer-layout,
+  .charts-grid-row,
+  .mfg-grid-4,
+  .accel-three-cards,
+  .thermal-grid-layout,
+  .ecosystem-three-cards,
+  .roadmap-deck-timeline,
+  .citations-three-cards {
+    grid-template-columns: 1fr !important;
+    overflow-y: auto !important; /* Internal scrolling on mobile viewports */
+  }
+
+  .slide {
+    overflow-y: auto !important;
+    pointer-events: auto;
+  }
+  
+  #three-container {
+    height: 300px !important;
+  }
+  
+  .timeline-deck-track {
+    display: none !important;
+  }
+  
+  .timeline-deck-list {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  
+  .timeline-deck-item {
+    width: 100% !important;
+  }
+  
+  .timeline-deck-item:nth-child(odd) .timeline-deck-card,
+  .timeline-deck-item:nth-child(even) .timeline-deck-card {
+    transform: none !important;
+  }
+
+  .timeline-deck-node {
+    display: none !important;
+  }
+  
+  .presentation-progress-wrapper {
+    max-width: 150px;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  html {
+    font-size: 13px;
+  }
+  
+  .slide-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  #three-container {
+    height: 220px !important;
+  }
+}

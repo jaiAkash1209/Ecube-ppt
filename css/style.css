@@ -1,0 +1,1258 @@
+/* ==========================================================================
+   HBM4/HBM4E Interactive Presentation Showcase - Base Stylesheet
+   ========================================================================== */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables (Gemini Theme) */
+:root {
+  --bg-color: #050816;
+  --bg-color-rgb: 5, 8, 22;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-border-glow: rgba(155, 114, 203, 0.25);
+  
+  /* Gemini Brand Gradient Colors */
+  --gemini-blue: #4285F4;
+  --gemini-blue-rgb: 66, 133, 244;
+  --gemini-purple: #9B72CB;
+  --gemini-purple-rgb: 155, 114, 203;
+  --gemini-pink: #D96BBA;
+  --gemini-pink-rgb: 217, 107, 186;
+  --gemini-amber: #F4B400;
+  --gemini-amber-rgb: 244, 180, 0;
+
+  --white-text: #F5F7FA;
+  --text-muted: #8E9FB6;
+  --font-title: 'Space Grotesk', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sub: 'Inter', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --navbar-height: 75px;
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-slide: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease-in-out;
+}
+
+/* Reset and Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Lock scrollbars for slideshow */
+  background-color: var(--bg-color);
+  font-family: var(--font-body);
+  color: var(--white-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  letter-spacing: 1px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+/* Widescreen Slides Framework */
+.slides-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  transition: var(--transition-slide);
+  padding: 40px 40px 90px 40px; /* Space for controls */
+}
+
+/* Slide active/previous transitions states */
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  z-index: 10;
+}
+
+.slide.prev {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-100%);
+  z-index: 5;
+}
+
+/* Background Particles Container */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 30px;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glass-card:hover {
+  border-color: var(--card-border-glow);
+  box-shadow: 0 15px 30px rgba(155, 114, 203, 0.08);
+}
+
+/* Buttons */
+.btn-neon {
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--white-text);
+  background: transparent;
+  border: 2px solid var(--gemini-blue);
+  padding: 10px 24px;
+  border-radius: 50px;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.btn-neon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(45deg, var(--gemini-blue), var(--gemini-purple), var(--gemini-pink));
+  transform: translate(-50%, -50%) scale(0);
+  transition: var(--transition-smooth);
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.btn-neon:hover {
+  color: #000;
+  border-color: transparent;
+  box-shadow: 0 0 20px rgba(66, 133, 244, 0.5);
+}
+
+.btn-neon:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.btn-neon-pink {
+  border-color: var(--gemini-pink);
+}
+.btn-neon-pink::after {
+  background: linear-gradient(45deg, var(--gemini-pink), var(--gemini-purple), var(--gemini-amber));
+}
+.btn-neon-pink:hover {
+  box-shadow: 0 0 20px rgba(217, 107, 186, 0.5);
+}
+
+/* Text Highlights */
+.glow-text-cyan { text-shadow: 0 0 10px rgba(66, 133, 244, 0.5); }
+.glow-text-purple { text-shadow: 0 0 10px rgba(155, 114, 203, 0.5); }
+.glow-text-pink { text-shadow: 0 0 10px rgba(217, 107, 186, 0.5); }
+
+/* Shimmering Text Gradient (Gemini Look) */
+.gradient-text {
+  background: linear-gradient(90deg, var(--gemini-blue) 0%, var(--gemini-purple) 35%, var(--gemini-pink) 70%, var(--gemini-amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: shine-text 5s linear infinite;
+}
+
+@keyframes shine-text {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Header Slide Section Rules */
+.slide-header {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.slide-header .slide-tag {
+  font-family: var(--font-sub);
+  color: var(--gemini-blue);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.slide-header h2 {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.slide-header .header-bar {
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gemini-blue), var(--gemini-purple));
+  border-radius: 2px;
+}
+
+.container {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Presentation Bottom Navigation Overlay Controls */
+.slide-controls-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 70px;
+  background: rgba(5, 8, 22, 0.85);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--card-border);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.presentation-progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+  max-width: 400px;
+}
+
+.presentation-slide-num {
+  font-family: var(--font-sub);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.presentation-track-line {
+  flex: 1;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.presentation-fill-line {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gemini-blue), var(--gemini-purple), var(--gemini-pink));
+  box-shadow: 0 0 8px var(--gemini-blue);
+  transition: width 0.3s ease;
+}
+
+.presenter-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-ctrl {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--card-border);
+  color: var(--white-text);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.btn-ctrl:hover {
+  background-color: var(--gemini-purple);
+  color: #000;
+  border-color: transparent;
+  box-shadow: 0 0 15px rgba(155, 114, 203, 0.5);
+}
+
+.btn-ctrl:disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Slide Content Grid Alignments
+   ========================================================================== */
+.slide-grid-2 {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 30px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Title Slide Cover Layout */
+.hero-slide-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.hero-slide-text h1 {
+  font-size: 3.2rem;
+  margin-bottom: 15px;
+  min-height: 110px;
+}
+
+.hero-slide-text .hero-badge {
+  font-family: var(--font-sub);
+  color: var(--gemini-blue);
+  background: rgba(66, 133, 244, 0.08);
+  border: 1px solid rgba(66, 133, 244, 0.2);
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero-slide-text p {
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+}
+
+.hero-slide-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-slide-chip {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.hero-slide-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Intro comparative lists styling */
+.slide-grid-2 h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.intro-stats-row {
+  display: flex;
+  gap: 30px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.intro-stat-item {
+  flex: 1;
+}
+
+.intro-stat-val {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  color: var(--gemini-blue);
+  text-shadow: 0 0 10px rgba(66, 133, 244, 0.2);
+}
+
+.intro-stat-lbl {
+  font-family: var(--font-sub);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.intro-comp-table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.intro-comp-row {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 0.8fr 0.8fr;
+  padding: 8px 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+}
+
+.intro-comp-row.row-header {
+  font-family: var(--font-title);
+  font-weight: 700;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  text-transform: uppercase;
+  color: var(--white-text);
+}
+
+/* Timeline scroll layout */
+.timeline-deck-container {
+  width: 100%;
+  position: relative;
+  overflow: visible;
+  padding: 80px 0;
+  flex: 1;
+}
+
+.timeline-deck-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(155, 114, 203, 0.2), var(--gemini-blue), var(--gemini-purple), rgba(217, 107, 186, 0.2));
+  transform: translateY(-50%);
+}
+
+.timeline-deck-list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+.timeline-deck-item {
+  width: 19%;
+  text-align: center;
+  position: relative;
+}
+
+.timeline-deck-node {
+  width: 16px;
+  height: 16px;
+  background-color: var(--bg-color);
+  border: 3px solid var(--text-muted);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: var(--transition-smooth);
+}
+
+.timeline-deck-item:hover .timeline-deck-node {
+  border-color: var(--gemini-blue);
+  box-shadow: 0 0 10px var(--gemini-blue);
+}
+
+.timeline-deck-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  transition: var(--transition-smooth);
+}
+
+.timeline-deck-item:nth-child(odd) .timeline-deck-card {
+  transform: translateY(-110px);
+}
+
+.timeline-deck-item:nth-child(even) .timeline-deck-card {
+  transform: translateY(20px);
+}
+
+.timeline-deck-card:hover {
+  background-color: rgba(255,255,255,0.05);
+  border-color: var(--gemini-purple);
+}
+
+.timeline-deck-item:nth-child(odd):hover .timeline-deck-card {
+  transform: translateY(-115px) scale(1.02);
+}
+
+.timeline-deck-item:nth-child(even):hover .timeline-deck-card {
+  transform: translateY(15px) scale(1.02);
+}
+
+.timeline-deck-year {
+  font-family: var(--font-sub);
+  font-size: 0.8rem;
+  color: var(--gemini-blue);
+  font-weight: 700;
+  display: block;
+}
+
+.timeline-deck-card h4 {
+  font-size: 1.05rem;
+  margin: 3px 0 8px;
+}
+
+.timeline-deck-card p {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.timeline-deck-spec {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 5px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* Architecture Slide details */
+.arch-grid-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 30px;
+  width: 100%;
+  flex: 1;
+  align-items: center;
+}
+
+.arch-svg-wrapper {
+  background: rgba(0,0,0,0.4);
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+}
+
+.arch-svg {
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+}
+
+.svg-part {
+  cursor: none;
+}
+
+.arch-detail-card {
+  min-height: 280px;
+  justify-content: center;
+}
+
+.arch-detail-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.arch-detail-card p {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.arch-tech-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.arch-tech-row strong {
+  font-family: var(--font-sub);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin-right: 10px;
+}
+
+/* TSV Tech Cards */
+.tsv-three-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+}
+
+.tsv-tech-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+}
+
+.tsv-tech-card p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+/* 3D Stack Visualization Layout */
+.stack-explorer-layout {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 30px;
+  width: 100%;
+  flex: 1;
+  align-items: center;
+}
+
+.stack-explorer-sidebar {
+  padding-right: 10px;
+}
+
+.stack-explorer-sidebar h3 {
+  font-size: 1.35rem;
+  margin-bottom: 15px;
+}
+
+.stack-explorer-sidebar p {
+  font-size: 0.85rem;
+  margin-bottom: 25px;
+}
+
+.stack-ctrl-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.stack-legend-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stack-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sub);
+  font-size: 0.8rem;
+}
+
+.stack-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.dot-heat { background-color: var(--text-muted); }
+.dot-dram { background-color: var(--gemini-blue); }
+.dot-tsv { background-color: var(--gemini-pink); }
+.dot-base { background-color: var(--gemini-purple); }
+
+#three-container {
+  width: 100%;
+  height: 420px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Charts Layout */
+.charts-grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  width: 100%;
+  flex: 1;
+}
+
+.chart-slide-card {
+  height: 100%;
+}
+
+.chart-slide-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.chart-slide-lbl {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 15px;
+}
+
+.chart-canvas-box {
+  position: relative;
+  width: 100%;
+  height: 240px;
+}
+
+/* Manufacturing cards */
+.mfg-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+}
+
+.mfg-step-card .mfg-num {
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--gemini-blue), var(--gemini-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.mfg-step-card h4 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.mfg-step-card p {
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+/* AI Accelerators slide */
+.accel-three-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+}
+
+.accel-slide-card h4 {
+  font-size: 1.15rem;
+}
+
+.accel-slide-card .accel-sub {
+  font-family: var(--font-sub);
+  font-size: 0.75rem;
+  color: var(--gemini-blue);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.accel-slide-card p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+/* Thermal management slide */
+.thermal-grid-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 30px;
+  width: 100%;
+  flex: 1;
+  align-items: center;
+}
+
+.thermal-bullets-box h3 {
+  font-size: 1.35rem;
+  margin-bottom: 15px;
+}
+
+.thermal-bullets-box p {
+  font-size: 0.85rem;
+  margin-bottom: 25px;
+}
+
+.thermal-methods-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.thermal-method-item {
+  display: flex;
+  gap: 15px;
+}
+
+.thermal-method-item i {
+  font-size: 1.2rem;
+  margin-top: 3px;
+}
+
+.thermal-method-item h5 {
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.thermal-method-item p {
+  font-size: 0.78rem;
+  margin-bottom: 0;
+}
+
+.thermal-visual-box h3 {
+  font-size: 1.15rem;
+  margin-bottom: 15px;
+}
+
+.thermal-heatmap-container {
+  background: rgba(0,0,0,0.3);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+}
+
+.thermal-die-layer {
+  padding: 10px;
+  border-radius: 6px;
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.thermal-scale-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.thermal-scale-gradient {
+  flex: 1;
+  height: 4px;
+  margin: 0 10px;
+  background: linear-gradient(90deg, #102e3b, #31210b, #3b101c, #4a0d0d);
+  border-radius: 2px;
+}
+
+/* Comparison spec tables */
+.table-slide-card {
+  width: 100%;
+  flex: 1;
+  padding: 15px !important;
+}
+
+.presentation-spec-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.presentation-spec-table th,
+.presentation-spec-table td {
+  padding: 10px 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.85rem;
+}
+
+.presentation-spec-table th {
+  font-family: var(--font-title);
+  font-weight: 700;
+  color: var(--white-text);
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  text-transform: uppercase;
+}
+
+.presentation-spec-table td:first-child {
+  font-family: var(--font-sub);
+  font-weight: 600;
+}
+
+/* Semiconductor Ecosystem players */
+.ecosystem-three-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+}
+
+.eco-slide-card h4 {
+  font-size: 1.15rem;
+}
+
+.eco-slide-card .eco-slide-role {
+  font-family: var(--font-sub);
+  font-size: 0.7rem;
+  color: var(--gemini-blue);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.eco-slide-card p {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Future Roadmap slide */
+.roadmap-deck-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+}
+
+.roadmap-deck-step h5 {
+  font-family: var(--font-sub);
+  color: var(--gemini-blue);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.roadmap-deck-step h4 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.roadmap-deck-step p {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Quiz slide */
+.quiz-deck-card {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.quiz-deck-progress {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-sub);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.quiz-deck-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 2px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.quiz-deck-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gemini-blue), var(--gemini-purple));
+  transition: width 0.3s ease;
+}
+
+.quiz-deck-q {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.quiz-deck-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.quiz-deck-opt {
+  width: 100%;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-family: var(--font-body);
+  color: var(--white-text);
+  font-size: 0.88rem;
+  text-align: left;
+  transition: var(--transition-smooth);
+}
+
+.quiz-deck-opt:hover {
+  border-color: var(--gemini-blue);
+  background: rgba(255,255,255,0.05);
+}
+
+.quiz-deck-opt.correct {
+  background: rgba(66, 133, 244, 0.15) !important;
+  border-color: var(--gemini-blue) !important;
+  color: var(--gemini-blue) !important;
+  font-weight: 600;
+}
+
+.quiz-deck-opt.incorrect {
+  background: rgba(217, 107, 186, 0.15) !important;
+  border-color: var(--gemini-pink) !important;
+  color: var(--gemini-pink) !important;
+  font-weight: 600;
+}
+
+.quiz-deck-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 40px;
+}
+
+.quiz-deck-status {
+  font-family: var(--font-sub);
+  font-size: 0.85rem;
+}
+
+.quiz-deck-status.correct-txt { color: var(--gemini-blue); }
+.quiz-deck-status.incorrect-txt { color: var(--gemini-pink); }
+
+.quiz-deck-score {
+  font-family: var(--font-title);
+  font-size: 2.8rem;
+  margin: 15px 0;
+}
+
+/* Citations Slide */
+.citations-three-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+}
+
+.citation-slide-card h5 {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+.citation-slide-card p {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.citation-slide-card .cit-link {
+  font-family: var(--font-sub);
+  font-size: 0.75rem;
+  color: var(--gemini-blue);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+}
+
+/* Thank You Slide */
+.thank-you-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.thank-you-chip-box {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 35px rgba(155, 114, 203, 0.4);
+  margin-bottom: 25px;
+}
+
+.thank-you-chip-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.thank-you-layout h2 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+.thank-you-layout .ty-sub {
+  font-family: var(--font-sub);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gemini-blue);
+  margin-bottom: 30px;
+}
+
+.thank-you-layout p {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.thank-you-layout .footer-note {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.15);
+  margin-top: 50px;
+}
+
+/* Circular Percent Boot Loader Screen */
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.loader-content {
+  text-align: center;
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader-logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 25px;
+}
+
+.loader-svg {
+  width: 100%;
+  height: auto;
+}
+
+.loader-rect {
+  transform-origin: center;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 0;
+}
+
+.loader-text-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.loader-text-group h2 {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.loader-progress-text {
+  font-family: var(--font-title);
+  color: var(--gemini-blue);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.loader-bar-bg {
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.loader-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gemini-blue), var(--gemini-purple));
+  box-shadow: 0 0 8px var(--gemini-blue);
+  transition: width 0.1s linear;
+}
+
+/* Fullscreen Presentation Clean Canvas Rules */
+:fullscreen .slide-controls-overlay,
+:fullscreen .custom-cursor,
+:fullscreen .custom-cursor-dot {
+  display: none !important;
+}
+
+:-webkit-full-screen .slide-controls-overlay,
+:-webkit-full-screen .custom-cursor,
+:-webkit-full-screen .custom-cursor-dot {
+  display: none !important;
+}
+
+:-ms-fullscreen .slide-controls-overlay,
+:-ms-fullscreen .custom-cursor,
+:-ms-fullscreen .custom-cursor-dot {
+  display: none !important;
+}
