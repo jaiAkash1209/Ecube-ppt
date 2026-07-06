@@ -472,86 +472,90 @@ p {
   width: 100%;
   position: relative;
   overflow: visible;
-  padding: 125px 0 100px 0; /* Expanded padding to accommodate shifted timeline cards */
+  padding: 20px 0 95px 0; /* Clear space on top, padding at bottom for track line */
   flex: 1;
 }
 
 .timeline-deck-track {
   position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(155, 114, 203, 0.2), var(--gemini-blue), var(--gemini-purple), rgba(217, 107, 186, 0.2));
-  transform: translateY(-50%);
+  bottom: 35px; /* Positioned at the bottom to avoid text overlap completely */
+  left: 3%;
+  right: 3%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gemini-blue), var(--gemini-purple), var(--gemini-pink));
+  border-radius: 1.5px;
 }
 
 .timeline-deck-list {
   display: flex;
   justify-content: space-between;
+  align-items: stretch; /* All cards stretch to have identical heights */
   list-style: none;
   position: relative;
   z-index: 5;
   width: 100%;
+  padding: 0;
 }
 
 .timeline-deck-item {
-  width: 19%;
-  text-align: center;
+  width: 18.5%; /* Clean spacing for 5 columns side-by-side */
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .timeline-deck-node {
   width: 16px;
   height: 16px;
   background-color: var(--bg-color);
-  border: 3px solid var(--text-muted);
+  border: 3px solid var(--gemini-blue);
   border-radius: 50%;
   position: absolute;
-  top: 50%;
+  bottom: -60px; /* Centered exactly on the bottom track line */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 50%); /* Pivot center aligns node on line */
   transition: var(--transition-smooth);
+  z-index: 10;
 }
 
 .timeline-deck-item:hover .timeline-deck-node {
-  border-color: var(--gemini-blue);
-  box-shadow: 0 0 10px var(--gemini-blue);
+  border-color: var(--gemini-pink);
+  box-shadow: 0 0 10px var(--gemini-pink);
+  background-color: var(--gemini-pink);
 }
 
 .timeline-deck-card {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(12, 15, 28, 0.86);
+  border: 1px solid var(--card-border);
   border-radius: 12px;
-  padding: 15px;
+  padding: 18px 14px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
   transition: var(--transition-smooth);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.timeline-deck-item:nth-child(odd) .timeline-deck-card {
-  transform: translateY(-135px); /* Shifted up from -110px to avoid line overlap */
-}
-
+/* Disabled alternating odd/even shifts to allow clean horizontal alignment */
+.timeline-deck-item:nth-child(odd) .timeline-deck-card,
 .timeline-deck-item:nth-child(even) .timeline-deck-card {
-  transform: translateY(35px); /* Shifted down from 20px to avoid line overlap */
+  transform: none;
 }
 
 .timeline-deck-card:hover {
   background-color: rgba(255,255,255,0.05);
-  border-color: var(--gemini-purple);
 }
 
-.timeline-deck-item:nth-child(odd):hover .timeline-deck-card {
-  transform: translateY(-142px) scale(1.02);
-}
-
+.timeline-deck-item:nth-child(odd):hover .timeline-deck-card,
 .timeline-deck-item:nth-child(even):hover .timeline-deck-card {
-  transform: translateY(32px) scale(1.02);
+  transform: translateY(-8px); /* Subtle premium upward float on hover */
+  border-color: var(--gemini-purple);
+  box-shadow: 0 10px 25px rgba(155, 114, 203, 0.15);
 }
 
 .timeline-deck-year {
   font-family: var(--font-sub);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--gemini-blue);
   font-weight: 700;
   display: block;
@@ -565,14 +569,15 @@ p {
 .timeline-deck-card p {
   font-size: 0.95rem;
   line-height: 1.4;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  flex: 1; /* Pushes specs row to bottom */
 }
 
 .timeline-deck-spec {
   display: flex;
   justify-content: space-between;
   border-top: 1px solid rgba(255,255,255,0.05);
-  padding-top: 5px;
+  padding-top: 8px;
   font-size: 0.85rem;
   color: var(--text-muted);
 }
