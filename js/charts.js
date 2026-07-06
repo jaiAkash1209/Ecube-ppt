@@ -8,15 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initChartsController() {
   const bandwidthCtx = document.getElementById('bandwidthChart');
-  const efficiencyCtx = document.getElementById('efficiencyChart');
 
-  if (!bandwidthCtx || !efficiencyCtx) return;
+  if (!bandwidthCtx) return;
 
   if (typeof Chart !== 'undefined') {
     // Set custom Chart.js global styles matching the theme
     Chart.defaults.color = '#D1D9E0'; /* Brighter label color for projector clarity */
     Chart.defaults.font.family = "'Space Grotesk', sans-serif";
-    Chart.defaults.font.size = 12; /* Increased from 11 */
+    Chart.defaults.font.size = 12;
   } else {
     console.warn('Chart.js is not loaded.');
     return;
@@ -24,7 +23,6 @@ function initChartsController() {
 
   let chartsRendered = false;
   let bandwidthChartInstance = null;
-  let efficiencyChartInstance = null;
 
   function renderCharts() {
     if (chartsRendered) return;
@@ -74,60 +72,6 @@ function initChartsController() {
           x: {
             grid: { display: false },
             ticks: { color: '#F5F7FA', font: { family: "'Space Grotesk', sans-serif" } }
-          }
-        }
-      }
-    });
-
-    // Chart 2: Efficiency Radar Graph
-    efficiencyChartInstance = new Chart(efficiencyCtx, {
-      type: 'radar',
-      data: {
-        labels: ['Pin Speed', 'Efficiency (GB/s/W)', 'Capacity Density', 'Bus Width', 'Access Latency'],
-        datasets: [
-          {
-            label: 'HBM3E',
-            data: [62, 58, 55, 50, 72],
-            backgroundColor: 'rgba(66, 133, 244, 0.08)',
-            borderColor: '#4285F4',
-            borderWidth: 1.5,
-            pointBackgroundColor: '#4285F4'
-          },
-          {
-            label: 'HBM4',
-            data: [82, 85, 78, 90, 84],
-            backgroundColor: 'rgba(155, 114, 203, 0.08)',
-            borderColor: '#9B72CB',
-            borderWidth: 1.5,
-            pointBackgroundColor: '#9B72CB'
-          },
-          {
-            label: 'HBM4E',
-            data: [98, 96, 98, 90, 92],
-            backgroundColor: 'rgba(217, 107, 186, 0.08)',
-            borderColor: '#D96BBA',
-            borderWidth: 1.5,
-            pointBackgroundColor: '#D96BBA'
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'top',
-            labels: { color: '#F5F7FA', font: { family: "'Space Grotesk', sans-serif", size: 10 } }
-          }
-        },
-        scales: {
-          r: {
-            angleLines: { color: 'rgba(255, 255, 255, 0.12)' },
-            grid: { color: 'rgba(255, 255, 255, 0.1)' },
-            pointLabels: { color: '#F5F7FA', font: { family: "'Space Grotesk', sans-serif", size: 12 } },
-            ticks: { display: false },
-            min: 0,
-            max: 100
           }
         }
       }

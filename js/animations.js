@@ -106,13 +106,13 @@ function initGSAPRevealRegistry() {
       );
     }
 
-    // 4. Manufacturing cards (Slide 8) - float-up
-    const mfgSteps = activeSlide.querySelectorAll('.mfg-step-card');
+    // 4. Manufacturing steps (Slide 7) - float-up
+    const mfgSteps = activeSlide.querySelectorAll('.mfg-process-step');
     if (mfgSteps.length > 0) {
       gsap.killTweensOf(mfgSteps);
       gsap.fromTo(mfgSteps,
-        { opacity: 0, y: 50, rotation: -1.5, scale: 0.95 },
-        { opacity: 1, y: 0, rotation: 0, scale: 1, stagger: 0.12, duration: 0.8, ease: 'power3.out', clearProps: 'all' }
+        { opacity: 0, y: 25 },
+        { opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out', clearProps: 'all' }
       );
     }
 

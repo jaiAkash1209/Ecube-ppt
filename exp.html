@@ -3,87 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PowerPoint Exporter - HBM4 presentation</title>
+  <title>HBM4/HBM4E Presentation - PowerPoint Exporter</title>
+  
+  <!-- Space Grotesk Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- PptxGenJS CDN -->
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
+
   <style>
     :root {
       --bg-color: #050816;
-      --card-bg: rgba(10, 11, 20, 0.95);
-      --white-text: #F5F7FA;
+      --card-bg: rgba(12, 15, 28, 0.86);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-color: #F5F7FA;
+      --text-muted: #8E9FB6;
+      --gemini-blue: #4285F4;
+      --gemini-purple: #9B72CB;
+      --gemini-pink: #D96BBA;
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
+      font-family: 'Space Grotesk', sans-serif;
       background-color: var(--bg-color);
-      color: var(--white-text);
-      font-family: 'Space Grotesk', -apple-system, Segoe UI, sans-serif;
+      color: var(--text-color);
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      overflow: hidden;
+      background-image: radial-gradient(circle at 50% 50%, #0F122D 0%, #050816 100%);
     }
+
     .container {
       background: var(--card-bg);
-      border: 1px solid rgba(155, 114, 203, 0.2);
-      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
       padding: 40px;
+      max-width: 550px;
+      width: 90%;
       text-align: center;
-      max-width: 500px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
     }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px; bottom: -1px;
+      border-radius: 20px;
+      padding: 1px;
+      background: linear-gradient(135deg, var(--gemini-blue), var(--gemini-purple), var(--gemini-pink));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
     .spinner {
-      border: 4px solid rgba(255, 255, 255, 0.1);
       width: 50px;
       height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.05);
+      border-top-color: var(--gemini-purple);
       border-radius: 50%;
-      border-left-color: #4285F4;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 20px auto;
+      margin: 0 auto 25px;
+      animation: spin 1s infinite linear;
+      box-shadow: 0 0 15px rgba(155, 114, 203, 0.3);
     }
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    h2 {
-      margin: 0 0 10px 0;
-      color: #9B72CB;
-    }
-    p {
-      color: #8E9FB6;
-      margin: 0 0 20px 0;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
+
     button {
-      background: linear-gradient(90deg, #4285F4, #9B72CB);
+      background: linear-gradient(135deg, var(--gemini-blue), var(--gemini-purple));
+      color: #fff;
       border: none;
-      color: white;
       padding: 12px 28px;
-      font-size: 0.95rem;
       border-radius: 8px;
-      cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 600;
-      box-shadow: 0 0 15px rgba(155, 114, 203, 0.3);
-      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+      transition: var(--transition-smooth);
     }
+
     button:hover {
-      opacity: 0.9;
       transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(66, 133, 244, 0.4);
     }
+
     .back-link {
-      margin-top: 15px;
       display: inline-block;
-      color: #8E9FB6;
+      margin-top: 20px;
+      color: var(--text-muted);
       text-decoration: none;
       font-size: 0.85rem;
-      border-bottom: 1px dashed #8E9FB6;
-      transition: color 0.2s;
+      transition: var(--transition-smooth);
     }
+
     .back-link:hover {
-      color: #4285F4;
-      border-color: #4285F4;
+      color: var(--gemini-blue);
     }
   </style>
-  <!-- Load PptxGenJS CDN with dependencies bundle -->
-  <script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
 </head>
 <body>
 
@@ -200,159 +247,96 @@
         });
 
         // ==========================================
-        // SLIDE 5: TSVs
+        // SLIDE 5: 3D Packaging & Operations
         // ==========================================
         let s5 = pptx.addSlide();
         setSlideSetup(s5);
-        s5.addText("Through-Silicon Vias (TSV): Vertical Wires", {
+        s5.addText("3D Stacking & Processor Access Simulation", {
           x: 0.8, y: 0.5, w: 11.0, h: 0.8,
           fontSize: 36, bold: true, color: 'FFFFFF', fontFace: fontTitle
         });
-        s5.addText("Simply put: Instead of running long wires around the edges, TSVs are microscopic copper 'elevator shafts' drilled straight through the silicon, letting signals travel vertically and instantly.", {
-          x: 0.8, y: 1.3, w: 11.5, h: 0.8,
+        s5.addText("HBM4 stacks memory layers vertically to bypass physical spacing limits, integrating 4 core operations:", {
+          x: 0.8, y: 1.3, w: 11.5, h: 0.5,
           fontSize: 16, color: '8E9FB6', fontFace: fontBody, italic: true
         });
-        s5.addText("• How They Are Made: Deep Reactive-Ion Etching carves vias through silicon, insulated with oxides, and filled with copper electroplating.\n• Why We Use Them: Shorter paths drop trace impedance, prevent heat generation, and open thousands of parallel vertical data lanes.\n• Production Hurdles: Thinning DRAM wafers down to 30μm makes them fragile. Expansion differences can cause micro-cracking.", {
-          x: 0.8, y: 2.2, w: 11.5, h: 4.2,
+        s5.addText("• Instruction Fetch (IF): High-speed green data flows routing instruction codes from HBM stack to CPU cores.\n• Data Read (RD): Standard blue signals transferring operands and parameters from HBM columns to GPU cores.\n• Data Write (WR): Pink data signals routing processed calculations back from GPU cores into DRAM cell rows.\n• Memory Refresh (RF): Amber sequencing sweeps that periodically recharge capacitive cells inside DRAM dies.", {
+          x: 0.8, y: 2.0, w: 11.5, h: 4.5,
           fontSize: 18, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 26
         });
 
         // ==========================================
-        // SLIDE 6: 3D Stack
+        // SLIDE 6: Performance & Specs
         // ==========================================
         let s6 = pptx.addSlide();
         setSlideSetup(s6);
-        s6.addText("3D Stack Visualization: Stacking Chips", {
+        s6.addText("Performance Metrics & Specifications", {
           x: 0.8, y: 0.5, w: 11.0, h: 0.8,
           fontSize: 36, bold: true, color: 'FFFFFF', fontFace: fontTitle
         });
-        s6.addText("Simply put: Like building a skyscraper to fit more office space inside a small city block, HBM4 stacks memory layers vertically to save space and keep data lanes as close as possible.", {
-          x: 0.8, y: 1.3, w: 11.5, h: 0.8,
-          fontSize: 16, color: '8E9FB6', fontFace: fontBody, italic: true
+        
+        s6.addText("BANDWIDTH PERFORMANCE", {
+          x: 0.8, y: 1.6, w: 5.0, h: 0.4,
+          fontSize: 18, bold: true, color: '4285F4', fontFace: fontTitle
         });
-        s6.addText("• 3D Integration: Stacking DRAM layers vertically minimizes physical foot-space, packing more storage density.\n• Hybrid Bonding: Future HBM4 stacks will use copper-to-copper direct bonding, dropping pad spacing to under 10μm.\n• Thermal Caps: Heat spreader metal plates are mounted on top of the stack to pull core heat away quickly.", {
-          x: 0.8, y: 2.2, w: 11.5, h: 4.2,
-          fontSize: 18, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 26
+        s6.addText("• DDR5: 38.4 GB/s (Baseline flat bus)\n• GDDR7: 192 GB/s (Dedicated graphics standard)\n• HBM3E: 1228 GB/s (Legacy stacked standard)\n• HBM4: 2048 GB/s (Widescreen 2048-bit bus standard)\n• HBM4E: 2457+ GB/s (Enhanced performance peak)", {
+          x: 0.8, y: 2.1, w: 5.0, h: 4.0,
+          fontSize: 15, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 22
+        });
+
+        // Add spec table to s6
+        let rows = [
+          [
+            { text: "Feature Metric", options: { bold: true, color: "9B72CB" } },
+            { text: "HBM4 Standard", options: { bold: true, color: "9B72CB" } },
+            { text: "HBM4E (Enhanced)", options: { bold: true, color: "9B72CB" } }
+          ],
+          ["Max Capacity", "Up to 48 GB", "Up to 64 GB"],
+          ["Bus Width", "2048-bit / 32 Ch", "2048-bit / 32 Ch"],
+          ["Data Pin Speed", "8.0 Gbps", "9.6+ Gbps"],
+          ["Peak Bandwidth", "2.0 TB/s", "2.45+ TB/s"],
+          ["Logic Node", "TSMC Custom N5", "TSMC Custom N5"],
+          ["Stacking Height", "12 / 16 Layers", "12 / 16 Layers"]
+        ];
+        s6.addTable(rows, {
+          x: 6.2, y: 1.6, w: 6.3, h: 4.5,
+          fontFace: fontBody, fontSize: 13, color: 'FFFFFF',
+          border: { pt: 1, color: '2A2F45' }
         });
 
         // ==========================================
-        // SLIDE 7: Pin Configurations & Speed
+        // SLIDE 7: Manufacturing Flow & Thermals
         // ==========================================
         let s7 = pptx.addSlide();
         setSlideSetup(s7);
-        s7.addText("Pin Configurations & Interface Speeds", {
+        s7.addText("Manufacturing & Thermal Management", {
           x: 0.8, y: 0.5, w: 11.0, h: 0.8,
           fontSize: 36, bold: true, color: 'FFFFFF', fontFace: fontTitle
         });
-        s7.addText("• 2048-Bit Bus Width: HBM4 doubles the bus width of HBM3E (from 1024 to 2048 lines), widening the highway.\n• Sub-10μm Stacking Pitch: Compact direct hybrid copper-to-copper links bypass old microbump solder thickness parameters.\n• Data Bandwidth: HBM4 reaches up to 2.0 TB/s per stack, while HBM4E scales beyond 2.4 TB/s.\n• Pins Count: Scales to over 5,000 interconnect channels per stack, supporting massive parallel computing lanes.", {
-          x: 0.8, y: 1.6, w: 11.5, h: 4.8,
-          fontSize: 18, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 24
+        
+        s7.addText("3D MANUFACTURING WORKFLOW", {
+          x: 0.8, y: 1.6, w: 5.8, h: 0.4,
+          fontSize: 18, bold: true, color: '4285F4', fontFace: fontTitle
+        });
+        s7.addText("• 01. TSV Drilling: Deep RIE lasers drill microscopic channels straight through wafers, filling them with copper to construct vertical conduits.\n• 02. Wafer Thinning: Silicon substrates are ground down to paper-thin ~30μm dimensions to enable multi-layered stacking heights.\n• 03. Hybrid Bonding: Direct atomic Copper-to-Copper fusion merges DRAM layers together, dropping pad pitches below 10μm.", {
+          x: 0.8, y: 2.1, w: 5.8, h: 4.2,
+          fontSize: 14, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 22
+        });
+
+        s7.addText("THERMAL HEAT DISSIPATION MAP", {
+          x: 7.0, y: 1.6, w: 5.5, h: 0.4,
+          fontSize: 18, bold: true, color: 'D96BBA', fontFace: fontTitle
+        });
+        s7.addText("• Thermal Penalty: Stacking 16 hot memory layers traps high-power heat in the core logic.\n• TIM Materials: Advanced interface materials with high thermal conductivity conduct heat up to top lids.\n• Dummy Vias: Unconnected dummy TSVs are placed inside memory layers to act as passive heat pipeline guides.\n• Top cap: 45°C | Stack core: 78°C | Logic die: 60°C", {
+          x: 7.0, y: 2.1, w: 5.5, h: 4.2,
+          fontSize: 14, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 22
         });
 
         // ==========================================
-        // SLIDE 8: Manufacturing Flow
+        // SLIDE 8: Thank You
         // ==========================================
         let s8 = pptx.addSlide();
         setSlideSetup(s8);
-        s8.addText("Manufacturing Workflow", {
-          x: 0.8, y: 0.5, w: 11.0, h: 0.8,
-          fontSize: 36, bold: true, color: 'FFFFFF', fontFace: fontTitle
-        });
-        s8.addText("• Stage 1: Wafer Thinning. DRAM wafers are ground down to ~30-40μm thickness (thin as paper).\n• Stage 2: Laser Via Drilling. Drills microscopic TSV holes straight through memory chip surfaces.\n• Stage 3: Hybrid Bonding. Copper pads are aligned and bonded directly at room temperature without solder.\n• Stage 4: Underfill Encapsulation. Liquid epoxy is injected between dies to lock the stack against moisture.", {
-          x: 0.8, y: 1.6, w: 11.5, h: 4.8,
-          fontSize: 18, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 26
-        });
-
-        // ==========================================
-        // SLIDE 9: Physical Attributes
-        // ==========================================
-        let s9 = pptx.addSlide();
-        setSlideSetup(s9);
-        s9.addText("Physical Attributes Comparison Table", {
-          x: 0.8, y: 0.5, w: 11.0, h: 0.8,
-          fontSize: 36, bold: true, color: 'FFFFFF', fontFace: fontTitle
-        });
-        s9.addText("• Bus Width: HBM2/3 (1024-bit) vs. HBM4/4E (2048-bit).\n• Pin Speed: HBM3E (9.6 Gbps) vs. HBM4 (14.0 Gbps) and HBM4E (16.0+ Gbps).\n• Capacity per Stack: HBM3 (24 GB) vs. HBM4 (48 GB) and HBM4E (64 GB).\n• Bandwidth per Stack: HBM3E (1.2 TB/s) vs. HBM4 (2.0 TB/s) and HBM4E (2.4+ TB/s).\n• Interconnect Pitch: microbumps (~25μm) vs. hybrid direct copper-to-copper bonding (<10μm).", {
-          x: 0.8, y: 1.6, w: 11.5, h: 4.8,
-          fontSize: 18, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 24
-        });
-
-        // ==========================================
-        // SLIDE 10: Thermal Management
-        // ==========================================
-        let s10 = pptx.addSlide();
-        setSlideSetup(s10);
-        s10.addText("Thermal Management & Heat Dispersion", {
-          x: 0.8, y: 0.5, w: 11.0, h: 0.8,
-          fontSize: 36, bold: true, color: 'FFFFFF', fontFace: fontTitle
-        });
-        s10.addText("• Thermal Stacking Penalty: Stacking 16 hot memory layers traps heat in the center cells.\n• Underfill Material: Epoxy underfills are loaded with alumina particles to help conduct heat away vertically.\n• High-Thermal Metal Lid: A conductive metal alloy cap covers the top of the stack to extract heat to system fans.\n• Micro-cooling Vias: Unconnected dummy TSVs are placed inside memory layers to act as passive heat pipelines.", {
-          x: 0.8, y: 1.6, w: 11.5, h: 4.8,
-          fontSize: 18, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 26
-        });
-
-        // ==========================================
-        // SLIDE 11: Eco-Footprint
-        // ==========================================
-        let s11 = pptx.addSlide();
-        setSlideSetup(s11);
-        s11.addText("Eco-Footprint & Energy Efficiency", {
-          x: 0.8, y: 0.5, w: 11.0, h: 0.8,
-          fontSize: 36, bold: true, color: 'FFFFFF', fontFace: fontTitle
-        });
-        s11.addText("• Energy Drop: 3D stacking drops operational energy by ~30% compared to GDDR7 pipelines.\n• Short Channels: Keeping copper wires ultra-short prevents electrical losses (impedance core dissipation).\n• Green AI Datacenters: Lower memory energy prevents high cooling overheads, reducing global CO2 footprints.\n• Low VDDQ Core Voltages: Drops logic supply voltages to 1.1V/0.4V to keep power consumption low.", {
-          x: 0.8, y: 1.6, w: 11.5, h: 4.8,
-          fontSize: 18, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 26
-        });
-
-        // ==========================================
-        // SLIDE 12: Business Ecosystem
-        // ==========================================
-        let s12 = pptx.addSlide();
-        setSlideSetup(s12);
-        s12.addText("Global Market & Business Ecosystem", {
-          x: 0.8, y: 0.5, w: 11.0, h: 0.8,
-          fontSize: 36, bold: true, color: 'FFFFFF', fontFace: fontTitle
-        });
-        s12.addText("• Core Memory Producers: SK Hynix, Samsung Electronics, and Micron Technologies lead wafer stacks.\n• Advanced Foundries: TSMC, Samsung, and Intel build the custom high-performance logic base dies.\n• Datacenter Offtakers: NVIDIA (Hopper/Blackwell), AMD (Instinct MI300/400), Google (TPUs), and AWS.\n• Joint Engineering: Foundry-Memory alliances are crucial to align pad pitches under 10μm.", {
-          x: 0.8, y: 1.6, w: 11.5, h: 4.8,
-          fontSize: 18, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 26
-        });
-
-        // ==========================================
-        // SLIDE 13: Future Roadmap
-        // ==========================================
-        let s13 = pptx.addSlide();
-        setSlideSetup(s13);
-        s13.addText("Future Roadmap Timeline", {
-          x: 0.8, y: 0.5, w: 11.0, h: 0.8,
-          fontSize: 36, bold: true, color: 'FFFFFF', fontFace: fontTitle
-        });
-        s13.addText("• 2024: HBM3E volume production. 36 GB capacity, VDDQ at 1.1V, supporting high-speed training.\n• 2025/2026: HBM4 launch. 48 GB stack size, 2048-bit bus width. Transition to custom logic base dies.\n• 2027/2028: HBM4E debut. Over 2.4 TB/s stack speeds, VDDQ core voltage dropped further to cut heat.\n• 2030+: Optical Waveguides. Replaces copper TSVs with silicon laser channels to bypass speed limits.", {
-          x: 0.8, y: 1.6, w: 11.5, h: 4.8,
-          fontSize: 18, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 26
-        });
-
-        // ==========================================
-        // SLIDE 14: Technical References
-        // ==========================================
-        let s14 = pptx.addSlide();
-        setSlideSetup(s14);
-        s14.addText("Technical Citations & References", {
-          x: 0.8, y: 0.5, w: 11.0, h: 0.8,
-          fontSize: 36, bold: true, color: 'FFFFFF', fontFace: fontTitle
-        });
-        s14.addText("• JEDEC Solid State Association: Defines the mechanical standard specifications and bus dimensions.\n• IEEE Xplore Journals: Explains thermal expansion stresses, micro-cracking, and silicon thinning methods.\n• TSMC CoWoS Technical Briefings: Guides layout routines for interposers, microbumps, and hybrid bonding.", {
-          x: 0.8, y: 1.6, w: 11.5, h: 4.8,
-          fontSize: 18, color: 'FFFFFF', fontFace: fontBody, lineSpacing: 26
-        });
-
-        // ==========================================
-        // SLIDE 15: Thank You
-        // ==========================================
-        let s15 = pptx.addSlide();
-        setSlideSetup(s15);
-        s15.addText("THANK YOU", {
+        s8.addText("THANK YOU", {
           x: 1.0, y: 2.8, w: 11.3, h: 1.8,
           fontSize: 64, bold: true, color: 'FFFFFF', fontFace: fontTitle,
           align: 'center'
