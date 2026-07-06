@@ -472,7 +472,7 @@ p {
   width: 100%;
   position: relative;
   overflow: visible;
-  padding: 80px 0;
+  padding: 125px 0 100px 0; /* Expanded padding to accommodate shifted timeline cards */
   flex: 1;
 }
 
@@ -529,11 +529,11 @@ p {
 }
 
 .timeline-deck-item:nth-child(odd) .timeline-deck-card {
-  transform: translateY(-110px);
+  transform: translateY(-135px); /* Shifted up from -110px to avoid line overlap */
 }
 
 .timeline-deck-item:nth-child(even) .timeline-deck-card {
-  transform: translateY(20px);
+  transform: translateY(35px); /* Shifted down from 20px to avoid line overlap */
 }
 
 .timeline-deck-card:hover {
@@ -542,11 +542,11 @@ p {
 }
 
 .timeline-deck-item:nth-child(odd):hover .timeline-deck-card {
-  transform: translateY(-115px) scale(1.02);
+  transform: translateY(-142px) scale(1.02);
 }
 
 .timeline-deck-item:nth-child(even):hover .timeline-deck-card {
-  transform: translateY(15px) scale(1.02);
+  transform: translateY(32px) scale(1.02);
 }
 
 .timeline-deck-year {
