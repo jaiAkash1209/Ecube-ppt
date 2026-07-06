@@ -180,9 +180,16 @@
           fontSize: 44, bold: true, color: 'FFFFFF', fontFace: fontTitle
         });
 
-        s1.addText("Presented by: Jai Akash T\nElectronics & Communication Engineering (ECE)", {
-          x: 0.8, y: 3.4, w: 11.5, h: 1.2,
-          fontSize: 20, color: '9B72CB', fontFace: fontBody, bold: true
+        s1.addText([
+          { text: "Presented by: ", options: { fontSize: 20, color: '9B72CB', fontFace: fontBody, bold: true } },
+          { text: "Jai Akash T\n", options: { fontSize: 24, color: 'FFFFFF', fontFace: fontBody, bold: true } },
+          { text: "Register Number: ", options: { fontSize: 18, color: '9B72CB', fontFace: fontBody, bold: true } },
+          { text: "243115106037\n", options: { fontSize: 20, color: 'FFFFFF', fontFace: fontBody, bold: true } },
+          { text: "Class Section: ", options: { fontSize: 18, color: '9B72CB', fontFace: fontBody, bold: true } },
+          { text: "ECE-3A", options: { fontSize: 20, color: 'FFFFFF', fontFace: fontBody, bold: true } }
+        ], {
+          x: 0.8, y: 3.2, w: 11.5, h: 1.8,
+          lineSpacing: 10
         });
 
         s1.addText("A simple guide to the 3D-stacked vertical silicon chip structures, microscopic vertical copper wire connects, and high-speed lanes powering next-gen AI supercomputers.", {

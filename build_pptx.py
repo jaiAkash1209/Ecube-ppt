@@ -56,15 +56,35 @@ def create_presentation():
     p.font.bold = True
     p.font.color.rgb = white
     
-    txBox2 = s1.shapes.add_textbox(Inches(0.8), Inches(3.4), Inches(11.5), Inches(1.2))
+    txBox2 = s1.shapes.add_textbox(Inches(0.8), Inches(3.2), Inches(11.5), Inches(2.0))
     tf2 = txBox2.text_frame
     tf2.word_wrap = True
-    p2 = tf2.paragraphs[0]
-    p2.text = "Presented by: Jai Akash T\nElectronics & Communication Engineering (ECE)"
-    p2.font.name = 'Segoe UI'
-    p2.font.size = Pt(20)
-    p2.font.bold = True
-    p2.font.color.rgb = purple
+    
+    # Name
+    p_name = tf2.paragraphs[0]
+    p_name.text = "Presented by: Jai Akash T"
+    p_name.font.name = 'Segoe UI'
+    p_name.font.size = Pt(24)
+    p_name.font.bold = True
+    p_name.font.color.rgb = white
+    p_name.space_after = Pt(6)
+    
+    # Reg No
+    p_reg = tf2.add_paragraph()
+    p_reg.text = "Register Number: 243115106037"
+    p_reg.font.name = 'Segoe UI'
+    p_reg.font.size = Pt(20)
+    p_reg.font.bold = True
+    p_reg.font.color.rgb = purple
+    p_reg.space_after = Pt(6)
+    
+    # Class
+    p_class = tf2.add_paragraph()
+    p_class.text = "Class Section: ECE-3A"
+    p_class.font.name = 'Segoe UI'
+    p_class.font.size = Pt(20)
+    p_class.font.bold = True
+    p_class.font.color.rgb = purple
     
     txBox3 = s1.shapes.add_textbox(Inches(0.8), Inches(4.8), Inches(11.0), Inches(1.5))
     tf3 = txBox3.text_frame
