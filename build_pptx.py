@@ -35,7 +35,7 @@ def create_presentation():
         p = tf.paragraphs[0]
         p.text = text
         p.font.name = 'Segoe UI'
-        p.font.size = Pt(36) # Increased from 28
+        p.font.size = Pt(36)
         p.font.bold = True
         p.font.color.rgb = white
         return txBox
@@ -52,7 +52,7 @@ def create_presentation():
     p = tf.paragraphs[0]
     p.text = "High Bandwidth Memory (HBM4/HBM4E)"
     p.font.name = 'Segoe UI'
-    p.font.size = Pt(44) # Increased from 40
+    p.font.size = Pt(44)
     p.font.bold = True
     p.font.color.rgb = white
     
@@ -62,7 +62,7 @@ def create_presentation():
     p2 = tf2.paragraphs[0]
     p2.text = "Presented by: Jai Akash T\nElectronics & Communication Engineering (ECE)"
     p2.font.name = 'Segoe UI'
-    p2.font.size = Pt(20) # Increased from 18
+    p2.font.size = Pt(20)
     p2.font.bold = True
     p2.font.color.rgb = purple
     
@@ -72,7 +72,7 @@ def create_presentation():
     p3 = tf3.paragraphs[0]
     p3.text = "A simple guide to the 3D-stacked vertical silicon chip structures, microscopic vertical copper wire connects, and high-speed lanes powering next-gen AI supercomputers."
     p3.font.name = 'Segoe UI'
-    p3.font.size = Pt(16) # Increased from 13
+    p3.font.size = Pt(16)
     p3.font.color.rgb = muted
 
     # ==========================================
@@ -89,7 +89,7 @@ def create_presentation():
     pL = tfL.paragraphs[0]
     pL.text = "THE LAYMAN WAREHOUSE ANALOGY"
     pL.font.name = 'Segoe UI'
-    pL.font.size = Pt(18) # Increased from 14
+    pL.font.size = Pt(18)
     pL.font.bold = True
     pL.font.color.rgb = blue
     
@@ -102,10 +102,9 @@ def create_presentation():
         p = tfL.add_paragraph()
         p.text = b
         p.font.name = 'Segoe UI'
-        p.font.size = Pt(16) # Increased from 13
+        p.font.size = Pt(16)
         p.font.color.rgb = white
         p.space_after = Pt(12)
-        p.level = 0
 
     # Right Box (Challenge)
     txBoxR = s2.shapes.add_textbox(Inches(6.8), Inches(1.6), Inches(5.4), Inches(4.5))
@@ -114,7 +113,7 @@ def create_presentation():
     pR = tfR.paragraphs[0]
     pR.text = "TECHNICAL CHALLENGES WITH DDR"
     pR.font.name = 'Segoe UI'
-    pR.font.size = Pt(18) # Increased from 14
+    pR.font.size = Pt(18)
     pR.font.bold = True
     pR.font.color.rgb = pink
     
@@ -127,10 +126,9 @@ def create_presentation():
         p = tfR.add_paragraph()
         p.text = b
         p.font.name = 'Segoe UI'
-        p.font.size = Pt(16) # Increased from 13
+        p.font.size = Pt(16)
         p.font.color.rgb = white
         p.space_after = Pt(12)
-        p.level = 0
 
     # ==========================================
     # SLIDE 3: Evolution Timeline
@@ -156,10 +154,9 @@ def create_presentation():
         first = False
         p.text = b
         p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
+        p.font.size = Pt(18)
         p.font.color.rgb = white
         p.space_after = Pt(12)
-        p.level = 0
 
     # ==========================================
     # SLIDE 4: Architectural Breakdown
@@ -173,10 +170,10 @@ def create_presentation():
     tf.word_wrap = True
     
     bullets = [
-        "Silicon Interposer: The horizontal highway that connects the GPU side-by-side with the HBM Memory stack.",
-        "Custom Logic Base Die: The brain of the HBM stack. Built on advanced foundry nodes (TSMC/Samsung/Intel) to route signals.",
-        "DRAM Stack (12/16-High): Thin memory layers stacked vertically on top of the logic die to maximize capacity.",
-        "Microbumps & TSVs: Vertical connections that link the stacked layers to the base logic die."
+        "Silicon Interposer: The horizontal silicon highway that connects the GPU side-by-side with the HBM Memory stack.",
+        "Custom Logic Base Die: The buffer control die at the bottom. Built on advanced foundry nodes (TSMC N5) to schedule data.",
+        "DRAM Stack (12/16-High): Paper-thin memory layers stacked vertically on top of the logic base to packing storage capacity.",
+        "Microbumps & TSVs: Microscopic vertical copper wires drilled straight through silicon layers to connect stacked DRAM."
     ]
     first = True
     for b in bullets:
@@ -184,62 +181,24 @@ def create_presentation():
         first = False
         p.text = b
         p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
+        p.font.size = Pt(18)
         p.font.color.rgb = white
         p.space_after = Pt(14)
-        p.level = 0
 
     # ==========================================
-    # SLIDE 5: TSVs
-    # ==========================================
-    s5 = prs.slides.add_slide(blank_layout)
-    set_dark_background(s5)
-    add_title(s5, "Through-Silicon Vias (TSV): Vertical Wires")
-    
-    txBoxS = s5.shapes.add_textbox(Inches(0.8), Inches(1.3), Inches(11.5), Inches(0.8))
-    tfS = txBoxS.text_frame
-    tfS.word_wrap = True
-    pS = tfS.paragraphs[0]
-    pS.text = "Simply put: Instead of running long wires around the edges, TSVs are microscopic copper 'elevator shafts' drilled straight through the silicon, letting signals travel vertically and instantly."
-    pS.font.name = 'Segoe UI'
-    pS.font.size = Pt(16) # Increased from 13
-    pS.font.italic = True
-    pS.font.color.rgb = muted
-
-    txBox = s5.shapes.add_textbox(Inches(0.8), Inches(2.2), Inches(11.5), Inches(4.2))
-    tf = txBox.text_frame
-    tf.word_wrap = True
-    
-    bullets = [
-        "How They Are Made: Deep Reactive-Ion Etching carves vias through silicon, insulated with oxides, and filled with copper electroplating.",
-        "Why We Use Them: Shorter paths drop trace impedance, prevent heat generation, and open thousands of parallel vertical data lanes.",
-        "Production Hurdles: Thinning DRAM wafers down to 30μm makes them fragile. Expansion differences can cause micro-cracking."
-    ]
-    first = True
-    for b in bullets:
-        p = tf.paragraphs[0] if first else tf.add_paragraph()
-        first = False
-        p.text = b
-        p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
-        p.font.color.rgb = white
-        p.space_after = Pt(14)
-        p.level = 0
-
-    # ==========================================
-    # SLIDE 6: 3D Stack
+    # SLIDE 5: 3D Packaging & Operations
     # ==========================================
     s6 = prs.slides.add_slide(blank_layout)
     set_dark_background(s6)
-    add_title(s6, "3D Stack Visualization: Stacking Chips")
+    add_title(s6, "3D Stacking & Processor Access Simulation")
     
     txBoxS = s6.shapes.add_textbox(Inches(0.8), Inches(1.3), Inches(11.5), Inches(0.8))
     tfS = txBoxS.text_frame
     tfS.word_wrap = True
     pS = tfS.paragraphs[0]
-    pS.text = "Simply put: Like building a skyscraper to fit more office space inside a small city block, HBM4 stacks memory layers vertically to save space and keep data lanes as close as possible."
+    pS.text = "HBM4 stacks memory layers vertically to bypass physical spacing limits, integrating 4 core operations:"
     pS.font.name = 'Segoe UI'
-    pS.font.size = Pt(16) # Increased from 13
+    pS.font.size = Pt(16)
     pS.font.italic = True
     pS.font.color.rgb = muted
 
@@ -248,9 +207,10 @@ def create_presentation():
     tf.word_wrap = True
     
     bullets = [
-        "3D Integration: Stacking DRAM layers vertically minimizes physical foot-space, packing more storage density.",
-        "Hybrid Bonding: Future HBM4 stacks will use copper-to-copper direct bonding, dropping pad spacing to under 10μm.",
-        "Thermal Caps: Heat spreader metal plates are mounted on top of the stack to pull core heat away quickly."
+        "Instruction Fetch (IF): High-speed green data flows routing instruction codes from HBM stack to CPU cores.",
+        "Data Read (RD): Standard blue signals transferring operands and parameters from HBM columns to GPU cores.",
+        "Data Write (WR): Pink data signals routing processed calculations back from GPU cores into DRAM cell rows.",
+        "Memory Refresh (RF): Amber sequencing sweeps that periodically recharge capacitive cells inside DRAM dies."
     ]
     first = True
     for b in bullets:
@@ -258,237 +218,137 @@ def create_presentation():
         first = False
         p.text = b
         p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
+        p.font.size = Pt(18)
         p.font.color.rgb = white
         p.space_after = Pt(14)
-        p.level = 0
 
     # ==========================================
-    # SLIDE 7: Pin Configurations & Speed
+    # SLIDE 6: Performance & Specs comparison
     # ==========================================
     s7 = prs.slides.add_slide(blank_layout)
     set_dark_background(s7)
-    add_title(s7, "Pin Configurations & Interface Speeds")
+    add_title(s7, "Performance Metrics & Specifications")
     
-    txBox = s7.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(11.5), Inches(4.8))
-    tf = txBox.text_frame
-    tf.word_wrap = True
+    # Left: Bandwidth Metrics
+    txBoxL = s7.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(5.0), Inches(4.8))
+    tfL = txBoxL.text_frame
+    tfL.word_wrap = True
+    pL = tfL.paragraphs[0]
+    pL.text = "BANDWIDTH PERFORMANCE"
+    pL.font.name = 'Segoe UI'
+    pL.font.size = Pt(18)
+    pL.font.bold = True
+    pL.font.color.rgb = blue
     
-    bullets = [
-        "2048-Bit Bus Width: HBM4 doubles the bus width of HBM3E (from 1024 to 2048 lines), widening the highway.",
-        "Sub-10μm Stacking Pitch: Compact direct hybrid copper-to-copper links bypass old microbump solder thickness parameters.",
-        "Data Bandwidth: HBM4 reaches up to 2.0 TB/s per stack, while HBM4E scales beyond 2.4 TB/s.",
-        "Pins Count: Scales to over 5,000 interconnect channels per stack, supporting massive parallel computing lanes."
+    bulletsL = [
+        "DDR5: 38.4 GB/s (Baseline flat bus)",
+        "GDDR7: 192 GB/s (Dedicated graphics standard)",
+        "HBM3E: 1228 GB/s (Legacy stacked standard)",
+        "HBM4: 2048 GB/s (Widescreen 2048-bit bus standard)",
+        "HBM4E: 2457+ GB/s (Enhanced performance peak)"
     ]
-    first = True
-    for b in bullets:
-        p = tf.paragraphs[0] if first else tf.add_paragraph()
-        first = False
+    for b in bulletsL:
+        p = tfL.add_paragraph()
         p.text = b
         p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
+        p.font.size = Pt(15)
         p.font.color.rgb = white
-        p.space_after = Pt(12)
-        p.level = 0
+        p.space_after = Pt(8)
+
+    # Right: Add native PowerPoint Table
+    rows, cols = 7, 3
+    left, top, width, height = Inches(6.2), Inches(1.6), Inches(6.3), Inches(4.5)
+    table_shape = s7.shapes.add_table(rows, cols, left, top, width, height)
+    table = table_shape.table
+    
+    # Column widths
+    table.columns[0].width = Inches(2.3)
+    table.columns[1].width = Inches(2.0)
+    table.columns[2].width = Inches(2.0)
+    
+    table_data = [
+        ["Feature Metric", "HBM4 Standard", "HBM4E (Enhanced)"],
+        ["Max Capacity", "Up to 48 GB", "Up to 64 GB"],
+        ["Bus Width", "2048-bit / 32 Ch", "2048-bit / 32 Ch"],
+        ["Data Pin Speed", "8.0 Gbps", "9.6+ Gbps"],
+        ["Peak Bandwidth", "2.0 TB/s", "2.45+ TB/s"],
+        ["Logic Node", "TSMC Custom N5", "TSMC Custom N5"],
+        ["Stacking Height", "12 / 16 Layers", "12 / 16 Layers"]
+    ]
+    
+    for r_idx, row in enumerate(table_data):
+        for c_idx, val in enumerate(row):
+            cell = table.cell(r_idx, c_idx)
+            cell.text = val
+            p = cell.text_frame.paragraphs[0]
+            p.font.name = 'Segoe UI'
+            p.font.size = Pt(13)
+            p.font.color.rgb = white
+            if r_idx == 0:
+                p.font.bold = True
+                p.font.color.rgb = purple
+            elif c_idx == 2 and r_idx in [1, 3, 4]:
+                p.font.color.rgb = pink
+                p.font.bold = True
 
     # ==========================================
-    # SLIDE 8: Manufacturing Flow
+    # SLIDE 7: Manufacturing Flow & Thermals
     # ==========================================
     s8 = prs.slides.add_slide(blank_layout)
     set_dark_background(s8)
-    add_title(s8, "Manufacturing Workflow")
+    add_title(s8, "Manufacturing & Thermal Management")
     
-    txBox = s8.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(11.5), Inches(4.8))
-    tf = txBox.text_frame
-    tf.word_wrap = True
+    # Left: Mfg steps
+    txBoxL = s8.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(5.8), Inches(4.8))
+    tfL = txBoxL.text_frame
+    tfL.word_wrap = True
+    pL = tfL.paragraphs[0]
+    pL.text = "3D MANUFACTURING WORKFLOW"
+    pL.font.name = 'Segoe UI'
+    pL.font.size = Pt(18)
+    pL.font.bold = True
+    pL.font.color.rgb = blue
     
-    bullets = [
-        "Stage 1: Wafer Thinning. DRAM wafers are ground down to ~30-40μm thickness (thin as paper).",
-        "Stage 2: Laser Via Drilling. Drills microscopic TSV holes straight through memory chip surfaces.",
-        "Stage 3: Hybrid Bonding. Copper pads are aligned and bonded directly at room temperature without solder.",
-        "Stage 4: Underfill Encapsulation. Liquid epoxy is injected between dies to lock the stack against moisture."
+    bulletsL = [
+        "01. TSV Drilling: Deep RIE lasers drill microscopic channels straight through wafers, filling them with copper to construct vertical conduits.",
+        "02. Wafer Thinning: Silicon substrates are ground down to paper-thin ~30μm dimensions to enable multi-layered stacking heights.",
+        "03. Hybrid Bonding: Direct atomic Copper-to-Copper fusion merges DRAM layers together, dropping pad pitches below 10μm."
     ]
-    first = True
-    for b in bullets:
-        p = tf.paragraphs[0] if first else tf.add_paragraph()
-        first = False
+    for b in bulletsL:
+        p = tfL.add_paragraph()
         p.text = b
         p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
-        p.font.color.rgb = white
-        p.space_after = Pt(14)
-        p.level = 0
-
-    # ==========================================
-    # SLIDE 9: Physical Attributes
-    # ==========================================
-    s9 = prs.slides.add_slide(blank_layout)
-    set_dark_background(s9)
-    add_title(s9, "Physical Attributes Comparison")
-    
-    txBox = s9.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(11.5), Inches(4.8))
-    tf = txBox.text_frame
-    tf.word_wrap = True
-    
-    bullets = [
-        "Bus Width: HBM2/3 (1024-bit) vs. HBM4/4E (2048-bit).",
-        "Pin Speed: HBM3E (9.6 Gbps) vs. HBM4 (14.0 Gbps) and HBM4E (16.0+ Gbps).",
-        "Capacity per Stack: HBM3 (24 GB) vs. HBM4 (48 GB) and HBM4E (64 GB).",
-        "Bandwidth per Stack: HBM3E (1.2 TB/s) vs. HBM4 (2.0 TB/s) and HBM4E (2.4+ TB/s).",
-        "Interconnect Pitch: microbumps (~25μm) vs. hybrid direct copper-to-copper bonding (<10μm)."
-    ]
-    first = True
-    for b in bullets:
-        p = tf.paragraphs[0] if first else tf.add_paragraph()
-        first = False
-        p.text = b
-        p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
+        p.font.size = Pt(14)
         p.font.color.rgb = white
         p.space_after = Pt(12)
-        p.level = 0
 
-    # ==========================================
-    # SLIDE 10: Thermal Management
-    # ==========================================
-    s10 = prs.slides.add_slide(blank_layout)
-    set_dark_background(s10)
-    add_title(s10, "Thermal Management & Heat Dispersion")
+    # Right: Thermal Management
+    txBoxR = s8.shapes.add_textbox(Inches(7.0), Inches(1.6), Inches(5.5), Inches(4.8))
+    tfR = txBoxR.text_frame
+    tfR.word_wrap = True
+    pR = tfR.paragraphs[0]
+    pR.text = "THERMAL HEAT DISSIPATION MAP"
+    pR.font.name = 'Segoe UI'
+    pR.font.size = Pt(18)
+    pR.font.bold = True
+    pR.font.color.rgb = pink
     
-    txBox = s10.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(11.5), Inches(4.8))
-    tf = txBox.text_frame
-    tf.word_wrap = True
-    
-    bullets = [
-        "Thermal Stacking Penalty: Stacking 16 hot memory layers traps heat in the center cells.",
-        "Underfill Material: Epoxy underfills are loaded with alumina particles to help conduct heat away vertically.",
-        "High-Thermal Metal Lid: A conductive metal alloy cap covers the top of the stack to extract heat to system fans.",
-        "Micro-cooling Vias: Unconnected dummy TSVs are placed inside memory layers to act as passive heat pipelines."
+    bulletsR = [
+        "Thermal Penalty: Stacking 16 hot memory layers traps high-power heat in the core logic.",
+        "TIM Materials: Advanced interface materials with high thermal conductivity conduct heat up to top lids.",
+        "Dummy Vias: Unconnected dummy TSVs are placed inside memory layers to act as passive heat pipeline guides.",
+        "Top cap: 45°C | Stack core: 78°C | Logic die: 60°C"
     ]
-    first = True
-    for b in bullets:
-        p = tf.paragraphs[0] if first else tf.add_paragraph()
-        first = False
+    for b in bulletsR:
+        p = tfR.add_paragraph()
         p.text = b
         p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
+        p.font.size = Pt(14)
         p.font.color.rgb = white
-        p.space_after = Pt(14)
-        p.level = 0
+        p.space_after = Pt(12)
 
     # ==========================================
-    # SLIDE 11: Eco-Footprint
-    # ==========================================
-    s11 = prs.slides.add_slide(blank_layout)
-    set_dark_background(s11)
-    add_title(s11, "Eco-Footprint & Energy Efficiency")
-    
-    txBox = s11.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(11.5), Inches(4.8))
-    tf = txBox.text_frame
-    tf.word_wrap = True
-    
-    bullets = [
-        "Energy Drop: 3D stacking drops operational energy by ~30% compared to GDDR7 pipelines.",
-        "Short Channels: Keeping copper wires ultra-short prevents electrical losses (impedance core dissipation).",
-        "Green AI Datacenters: Lower memory energy prevents high cooling overheads, reducing global CO2 footprints.",
-        "Low VDDQ Core Voltages: Drops logic supply voltages to 1.1V/0.4V to keep power consumption low."
-    ]
-    first = True
-    for b in bullets:
-        p = tf.paragraphs[0] if first else tf.add_paragraph()
-        first = False
-        p.text = b
-        p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
-        p.font.color.rgb = white
-        p.space_after = Pt(14)
-        p.level = 0
-
-    # ==========================================
-    # SLIDE 12: Business Ecosystem
-    # ==========================================
-    s12 = prs.slides.add_slide(blank_layout)
-    set_dark_background(s12)
-    add_title(s12, "Global Market & Business Ecosystem")
-    
-    txBox = s12.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(11.5), Inches(4.8))
-    tf = txBox.text_frame
-    tf.word_wrap = True
-    
-    bullets = [
-        "Core Memory Producers: SK Hynix, Samsung Electronics, and Micron Technologies lead wafer stacks.",
-        "Advanced Foundries: TSMC, Samsung, and Intel build the custom high-performance logic base dies.",
-        "Datacenter Offtakers: NVIDIA (Hopper/Blackwell), AMD (Instinct MI300/400), Google (TPUs), and AWS.",
-        "Joint Engineering: Foundry-Memory alliances are crucial to align pad pitches under 10μm."
-    ]
-    first = True
-    for b in bullets:
-        p = tf.paragraphs[0] if first else tf.add_paragraph()
-        first = False
-        p.text = b
-        p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
-        p.font.color.rgb = white
-        p.space_after = Pt(14)
-        p.level = 0
-
-    # ==========================================
-    # SLIDE 13: Future Roadmap
-    # ==========================================
-    s13 = prs.slides.add_slide(blank_layout)
-    set_dark_background(s13)
-    add_title(s13, "Future Roadmap Timeline")
-    
-    txBox = s13.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(11.5), Inches(4.8))
-    tf = txBox.text_frame
-    tf.word_wrap = True
-    
-    bullets = [
-        "2024: HBM3E volume production. 36 GB capacity, VDDQ at 1.1V, supporting high-speed training.",
-        "2025/2026: HBM4 launch. 48 GB stack size, 2048-bit bus width. Transition to custom logic base dies.",
-        "2027/2028: HBM4E debut. Over 2.4 TB/s stack speeds, VDDQ core voltage dropped further to cut heat.",
-        "2030+: Optical Waveguides. Replaces copper TSVs with silicon laser channels to bypass speed limits."
-    ]
-    first = True
-    for b in bullets:
-        p = tf.paragraphs[0] if first else tf.add_paragraph()
-        first = False
-        p.text = b
-        p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
-        p.font.color.rgb = white
-        p.space_after = Pt(14)
-        p.level = 0
-
-    # ==========================================
-    # SLIDE 14: Technical References
-    # ==========================================
-    s14 = prs.slides.add_slide(blank_layout)
-    set_dark_background(s14)
-    add_title(s14, "Technical Citations & References")
-    
-    txBox = s14.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(11.5), Inches(4.8))
-    tf = txBox.text_frame
-    tf.word_wrap = True
-    
-    bullets = [
-        "JEDEC Solid State Association: Defines the mechanical standard specifications and bus dimensions.",
-        "IEEE Xplore Journals: Explains thermal expansion stresses, micro-cracking, and silicon thinning methods.",
-        "TSMC CoWoS Technical Briefings: Guides layout routines for interposers, microbumps, and hybrid bonding."
-    ]
-    first = True
-    for b in bullets:
-        p = tf.paragraphs[0] if first else tf.add_paragraph()
-        first = False
-        p.text = b
-        p.font.name = 'Segoe UI'
-        p.font.size = Pt(18) # Increased from 14
-        p.font.color.rgb = white
-        p.space_after = Pt(14)
-        p.level = 0
-
-    # ==========================================
-    # SLIDE 15: Thank You
+    # SLIDE 8: Thank You
     # ==========================================
     s15 = prs.slides.add_slide(blank_layout)
     set_dark_background(s15)
@@ -500,7 +360,7 @@ def create_presentation():
     p.alignment = PP_ALIGN.CENTER
     p.text = "THANK YOU"
     p.font.name = 'Segoe UI'
-    p.font.size = Pt(64) # Increased from 56
+    p.font.size = Pt(64)
     p.font.bold = True
     p.font.color.rgb = white
 

@@ -363,301 +363,129 @@
         </div>
       </div>
     </section>
-
-    <!-- SLIDE 7: Performance Comparison (Chart.js) -->
+    <!-- SLIDE 6: Performance & Specification Comparison -->
     <section class="slide" id="slide-charts">
       <div class="container">
         <div class="slide-header">
           <span class="slide-tag">Data Benchmarks</span>
-          <h2>Performance Benchmarks Comparison</h2>
+          <h2>Performance Metrics & Specification Comparison</h2>
           <div class="header-bar"></div>
         </div>
-        <div class="charts-grid-row">
-          <!-- Chart 1 -->
-          <div class="glass-card glow-border chart-slide-card" style="border-color: var(--gemini-blue);">
-            <h3>Bandwidth Metrics (GB/s)</h3>
-            <span class="chart-slide-lbl">Peak device bandwidth comparison.</span>
-            <div class="chart-canvas-box">
-              <canvas id="bandwidthChart"></canvas>
+        <div class="charts-grid-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;">
+          <!-- Left: Charts -->
+          <div style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
+            <div class="glass-card glow-border chart-slide-card" style="border-color: var(--gemini-blue); padding: 15px; height: 235px; display: flex; flex-direction: column;">
+              <h3 style="font-size: 1.1rem; margin-bottom: 5px;">Bandwidth Metrics (GB/s)</h3>
+              <div class="chart-canvas-box" style="flex: 1; min-height: 150px; position: relative;">
+                <canvas id="bandwidthChart"></canvas>
+              </div>
+            </div>
+            <div class="glass-card glow-border chart-slide-card" style="border-color: var(--gemini-pink); padding: 15px; height: 235px; display: flex; flex-direction: column;">
+              <h3 style="font-size: 1.1rem; margin-bottom: 5px;">Power & Efficiency Parameters</h3>
+              <div class="chart-canvas-box" style="flex: 1; min-height: 150px; position: relative;">
+                <canvas id="efficiencyChart"></canvas>
+              </div>
             </div>
           </div>
-          <!-- Chart 2 -->
-          <div class="glass-card glow-border chart-slide-card" style="border-color: var(--gemini-pink);">
-            <h3>Power & Efficiency Coordinates</h3>
-            <span class="chart-slide-lbl">Comparing efficiency margins (radar layout).</span>
-            <div class="chart-canvas-box">
-              <canvas id="efficiencyChart"></canvas>
-            </div>
+          <!-- Right: Spec Table -->
+          <div class="glass-card glow-border table-slide-card" style="border-color: var(--gemini-purple); padding: 20px 25px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 15px; font-family: var(--font-title); text-transform: uppercase; color: var(--gemini-purple); font-weight: bold; letter-spacing: 0.5px;">HBM4 vs. HBM4E Specifications</h3>
+            <table class="presentation-spec-table">
+              <thead>
+                <tr>
+                  <th>Feature Metric</th>
+                  <th>HBM4 Standard</th>
+                  <th>HBM4E (Enhanced)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Max Capacity</td>
+                  <td>Up to 48 GB</td>
+                  <td class="glow-text-pink" style="color: var(--gemini-pink); font-weight: bold;">Up to 64 GB</td>
+                </tr>
+                <tr>
+                  <td>Bus Width</td>
+                  <td>2048-bit / 32 Ch</td>
+                  <td>2048-bit / 32 Ch</td>
+                </tr>
+                <tr>
+                  <td>Data Pin Speed</td>
+                  <td>8.0 Gbps</td>
+                  <td class="glow-text-pink" style="color: var(--gemini-pink); font-weight: bold;">9.6+ Gbps</td>
+                </tr>
+                <tr>
+                  <td>Peak Bandwidth</td>
+                  <td>2.0 TB/s</td>
+                  <td class="glow-text-pink" style="color: var(--gemini-pink); font-weight: bold;">2.45+ TB/s</td>
+                </tr>
+                <tr>
+                  <td>Logic Base node</td>
+                  <td>TSMC Custom N5</td>
+                  <td>TSMC Custom N5</td>
+                </tr>
+                <tr>
+                  <td>Stacking height</td>
+                  <td>12 / 16 Layers</td>
+                  <td>12 / 16 Layers</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 8: Manufacturing Packaging Flow -->
-    <section class="slide" id="slide-mfg">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">Industrialization</span>
-          <h2>HBM4 Stacking & Packaging Flow</h2>
-          <div class="header-bar"></div>
-        </div>
-        <div class="mfg-grid-4">
-          <div class="glass-card mfg-step-card hover-target">
-            <span class="mfg-num">01</span>
-            <h4>Wafer Fabrication</h4>
-            <p>DRAM cell circuits are printed on thin high-purity silicon wafers using UV lithography.</p>
-          </div>
-          <div class="glass-card mfg-step-card hover-target">
-            <span class="mfg-num">02</span>
-            <h4>TSV Etch & Copper Fill</h4>
-            <p>Reactive-Ion Etching bores vias. Electroplating deposits copper contacts.</p>
-          </div>
-          <div class="glass-card mfg-step-card hover-target">
-            <span class="mfg-num">03</span>
-            <h4>Thinning & Stacking</h4>
-            <p>Silicon is back-ground to ~30μm thinned dies stacked over logic base die.</p>
-          </div>
-          <div class="glass-card mfg-step-card hover-target">
-            <span class="mfg-num">04</span>
-            <h4>Hybrid Bonding & Package</h4>
-            <p>Direct atomic Copper-to-Copper bonding merges layers, replacing microbumps for packaging integration.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 9: AI Accelerator Integration -->
-    <section class="slide" id="slide-accel">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">AI Hardware</span>
-          <h2>AI Accelerator Integrations</h2>
-          <div class="header-bar"></div>
-        </div>
-        <div class="accel-three-cards">
-          <!-- NVIDIA Blackwell -->
-          <div class="glass-card glow-border accel-slide-card hover-target" style="border-color: var(--gemini-blue);">
-            <h4 class="glow-text-cyan" style="color: var(--gemini-blue);">NVIDIA Blackwell</h4>
-            <span class="accel-sub">GB200 / Ultra series</span>
-            <p>Integrates ultra-fast HBM3E configuration. Future Blackwell-Ultra iterations are engineered around wide-bus HBM4 interfaces to push 8.0 TB/s global bandwidth coordinates.</p>
-          </div>
-          <!-- AMD Instinct -->
-          <div class="glass-card glow-border accel-slide-card hover-target" style="border-color: var(--gemini-purple);">
-            <h4 class="glow-text-purple" style="color: var(--gemini-purple);">AMD Instinct</h4>
-            <span class="accel-sub">MI325X / MI350 series</span>
-            <p>AMD holds capacity leadership (up to 288GB HBM3E). The upcoming MI350 accelerator family relies on HBM4 vertical integration stacks to drive deep training pipelines.</p>
-          </div>
-          <!-- Google TPU -->
-          <div class="glass-card glow-border accel-slide-card hover-target" style="border-color: var(--gemini-pink);">
-            <h4 class="glow-text-pink" style="color: var(--gemini-pink);">Google TPU</h4>
-            <span class="accel-sub">TPU v5p / v6 Cluster</span>
-            <p>Custom ASICs require extremely wide memory buses. Google links custom-designed logic base memory dies next to tensor cores to drop cluster latency parameters.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 10: Thermal Management -->
+    <!-- SLIDE 7: Stacking & Thermal Management -->
     <section class="slide" id="slide-thermal">
       <div class="container">
         <div class="slide-header">
           <span class="slide-tag">Thermodynamics</span>
-          <h2>Thermal Dissipation in 3D Packages</h2>
+          <h2>3D Manufacturing Flow & Thermal Dispersion</h2>
           <div class="header-bar"></div>
         </div>
-        <div class="thermal-grid-layout">
-          <div class="thermal-bullets-box">
-            <h3>The Core Heat Bottleneck</h3>
-            <p>Stacking 12/16 silicon layers concentrates massive power densities. Inner layers cannot directly expose to ambient coolant blocks.</p>
-            <div class="thermal-methods-list">
-              <div class="thermal-method-item">
-                <i class="fas fa-snowflake glow-text-cyan" style="color: var(--gemini-blue);"></i>
-                <div>
-                  <h5>Liquid Cooling & Microfluidics</h5>
-                  <p>Engraving liquid conduction micro-channels directly onto memory silicon backplanes.</p>
-                </div>
-              </div>
-              <div class="thermal-method-item">
-                <i class="fas fa-layer-group glow-text-purple" style="color: var(--gemini-purple);"></i>
-                <div>
-                  <h5>High-Thermal TIM</h5>
-                  <p>Advanced interface materials placed between stacked layers to reduce thermal resistance.</p>
-                </div>
-              </div>
+        <div class="thermal-grid-layout" style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px; width: 100%;">
+          <!-- Left: Manufacturing Steps -->
+          <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+            <div class="glass-card mfg-step-card hover-target" style="padding: 16px 20px; border-color: rgba(66, 133, 244, 0.25); min-height: 140px; display: flex; flex-direction: column; justify-content: center;">
+              <span class="mfg-num" style="font-family: var(--font-title); font-size: 1.15rem; color: var(--gemini-blue); font-weight: bold; margin-bottom: 2px; display: block;">01. TSV Etch & Copper Electrofill</span>
+              <p style="font-size: 0.9rem; margin-bottom: 0;">Microscopic vertical copper wires are etched straight through DRAM layers, constructing immediate data conduits across all vertical nodes.</p>
+            </div>
+            <div class="glass-card mfg-step-card hover-target" style="padding: 16px 20px; border-color: rgba(155, 114, 203, 0.25); min-height: 140px; display: flex; flex-direction: column; justify-content: center;">
+              <span class="mfg-num" style="font-family: var(--font-title); font-size: 1.15rem; color: var(--gemini-purple); font-weight: bold; margin-bottom: 2px; display: block;">02. DRAM Wafer Thinning (~30μm)</span>
+              <p style="font-size: 0.9rem; margin-bottom: 0;">Silicon wafers are back-ground to thin paper-like dimensions, enabling dense 12/16-high stacking profiles within physical package height limits.</p>
+            </div>
+            <div class="glass-card mfg-step-card hover-target" style="padding: 16px 20px; border-color: rgba(217, 107, 186, 0.25); min-height: 140px; display: flex; flex-direction: column; justify-content: center;">
+              <span class="mfg-num" style="font-family: var(--font-title); font-size: 1.15rem; color: var(--gemini-pink); font-weight: bold; margin-bottom: 2px; display: block;">03. Direct Copper-to-Copper Hybrid Bonding</span>
+              <p style="font-size: 0.9rem; margin-bottom: 0;">Atomic Copper-to-Copper bonds merge logic and DRAM layers together at room temp, replacing microbumps to drop pad pitch parameters under 10μm.</p>
             </div>
           </div>
-          <div class="glass-card glow-border thermal-visual-box" style="border-color: var(--gemini-pink);">
-            <h3>Heat Dissipation Map</h3>
-            <div class="thermal-heatmap-container">
-              <div class="thermal-die-layer cooling-zone">Cooling Interface (Top) <span class="temp-badge">45°C</span></div>
-              <div class="thermal-die-layer warm-zone">DRAM Layer 12-16 <span class="temp-badge">55°C</span></div>
-              <div class="thermal-die-layer hot-zone">DRAM Layer 8-12 <span class="temp-badge">68°C</span></div>
-              <div class="thermal-die-layer core-hot-zone">DRAM Layer 1-8 (TSV Core) <span class="temp-badge">78°C</span></div>
-              <div class="thermal-die-layer warm-zone">Custom Logic Base Die <span class="temp-badge">60°C</span></div>
-              <div class="thermal-scale-bar">
+          <!-- Right: Heat Dissipation Map -->
+          <div class="glass-card glow-border thermal-visual-box" style="border-color: var(--gemini-pink); padding: 20px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 15px; font-family: var(--font-title); color: var(--gemini-pink); text-transform: uppercase;">Core Stacking Heatmap</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 18px; line-height: 1.5;">Stacking 16 layers traps hot thermal currents in the core. Dummy TSVs and thermal interface sheets route heat up to top caps.</p>
+            <div class="thermal-heatmap-container" style="padding: 12px; background: rgba(0,0,0,0.4); border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+              <div class="thermal-die-layer cooling-zone" style="background: rgba(66, 133, 244, 0.15); border: 1px solid rgba(66, 133, 244, 0.3); padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 6px; color: #fff;">
+                Top Spreader Cap <span style="color: var(--gemini-blue);">45°C</span>
+              </div>
+              <div class="thermal-die-layer warm-zone" style="background: rgba(155, 114, 203, 0.12); border: 1px solid rgba(155, 114, 203, 0.25); padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 6px; color: #fff;">
+                DRAM Layers 12-16 <span style="color: var(--gemini-purple);">55°C</span>
+              </div>
+              <div class="thermal-die-layer warm-zone" style="background: rgba(155, 114, 203, 0.15); border: 1px solid rgba(155, 114, 203, 0.3); padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 6px; color: #fff;">
+                DRAM Layers 8-12 <span style="color: var(--gemini-purple);">68°C</span>
+              </div>
+              <div class="thermal-die-layer hot-zone" style="background: rgba(217, 107, 186, 0.18); border: 1px solid rgba(217, 107, 186, 0.4); padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 6px; color: #fff;">
+                TSV Stack Core (1-8) <span style="color: var(--gemini-pink);">78°C</span>
+              </div>
+              <div class="thermal-die-layer warm-zone" style="background: rgba(66, 133, 244, 0.12); border: 1px solid rgba(66, 133, 244, 0.25); padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 8px; color: #fff;">
+                Logic Base Die <span style="color: var(--gemini-blue);">60°C</span>
+              </div>
+              <div class="thermal-scale-bar" style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted);">
                 <span>Cool (40°C)</span>
-                <div class="thermal-scale-gradient"></div>
+                <div class="thermal-scale-gradient" style="flex: 1; margin: 0 10px; height: 6px; background: linear-gradient(90deg, #4285F4, #9B72CB, #D96BBA); border-radius: 3px;"></div>
                 <span>Hot (80°C)</span>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 11: Specification Comparison -->
-    <section class="slide" id="slide-specs">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">Specs</span>
-          <h2>HBM4 vs. HBM4E Comparison</h2>
-          <div class="header-bar"></div>
-        </div>
-        <div class="glass-card glow-border table-slide-card" style="border-color: var(--gemini-purple);">
-          <table class="presentation-spec-table">
-            <thead>
-              <tr>
-                <th>Feature Metric</th>
-                <th>HBM4 Standard</th>
-                <th>HBM4E (Enhanced)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Max Density (Stack)</td>
-                <td>Up to 48 GB</td>
-                <td class="glow-text-pink font-bold" style="color: var(--gemini-pink);">Up to 64 GB</td>
-              </tr>
-              <tr>
-                <td>Bus Width / Channels</td>
-                <td>2048-bit / 32 Channels</td>
-                <td>2048-bit / 32 Channels</td>
-              </tr>
-              <tr>
-                <td>Data Pin Speed</td>
-                <td>6.4 - 8.0 Gbps</td>
-                <td class="glow-text-pink font-bold" style="color: var(--gemini-pink);">8.0 - 9.6+ Gbps</td>
-              </tr>
-              <tr>
-                <td>Peak Bandwidth (Stack)</td>
-                <td>1.6 - 2.0 TB/s</td>
-                <td class="glow-text-pink font-bold" style="color: var(--gemini-pink);">2.0 - 2.45+ TB/s</td>
-              </tr>
-              <tr>
-                <td>Logic Base Foundry</td>
-                <td>TSMC Custom Logic</td>
-                <td>TSMC Custom Logic</td>
-              </tr>
-              <tr>
-                <td>Stack Height Limit</td>
-                <td>12-High / 16-High</td>
-                <td>12-High / 16-High</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 12: Semiconductor Ecosystem -->
-    <section class="slide" id="slide-ecosystem">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">Ecosystem</span>
-          <h2>Ecosystem Players</h2>
-          <div class="header-bar"></div>
-        </div>
-        <div class="ecosystem-three-cards">
-          <!-- Card 1 -->
-          <div class="glass-card glow-border eco-slide-card hover-target" style="border-color: var(--gemini-blue);">
-            <h4>Samsung & SK hynix</h4>
-            <span class="eco-slide-role" style="color: var(--gemini-blue);">MEMORY foundry MANUFACTURERS</span>
-            <p>Produce thinned vertical layers. Innovate copper-bonding profiles to standard JEDEC layout limits.</p>
-          </div>
-          <!-- Card 2 -->
-          <div class="glass-card glow-border eco-slide-card hover-target" style="border-color: var(--gemini-purple);">
-            <h4>TSMC</h4>
-            <span class="eco-slide-role" style="color: var(--gemini-purple);">LOGIC & packaging foundries</span>
-            <p>Fabricates the custom logic base dies (N5 process nodes) and performs CoWoS interposer stacking integration.</p>
-          </div>
-          <!-- Card 3 -->
-          <div class="glass-card glow-border eco-slide-card hover-target" style="border-color: var(--gemini-pink);">
-            <h4>NVIDIA & AMD</h4>
-            <span class="eco-slide-role" style="color: var(--gemini-pink);">PRIMARY CONSUMERS</span>
-            <p>Integrate 2048-bit wide stacks next to GPUs, establishing custom schedule tasks on base logic memory dies.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 13: Future Roadmap -->
-    <section class="slide" id="slide-roadmap">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">Roadmap</span>
-          <h2>Beyond HBM4: Future Milestones</h2>
-          <div class="header-bar"></div>
-        </div>
-        <div class="roadmap-deck-timeline">
-          <!-- Step 1 -->
-          <div class="glass-card glow-border roadmap-deck-step hover-target" style="border-color: var(--gemini-blue);">
-            <h5 style="color: var(--gemini-blue);">2025/2026</h5>
-            <h4>HBM4 Standard</h4>
-            <p>Transition to 2048-bit base bus width and custom TSMC logic base structures.</p>
-          </div>
-          <!-- Step 2 -->
-          <div class="glass-card glow-border roadmap-deck-step hover-target" style="border-color: var(--gemini-purple);">
-            <h5 style="color: var(--gemini-purple);">2026/2027</h5>
-            <h4>HBM4E Enhanced</h4>
-            <p>Deploying 9.6 Gbps speeds and expanding density capacities up to 64GB.</p>
-          </div>
-          <!-- Step 3 -->
-          <div class="glass-card glow-border roadmap-deck-step hover-target" style="border-color: var(--gemini-pink);">
-            <h5 style="color: var(--gemini-pink);">2028/2029</h5>
-            <h4>HBM5 Standard</h4>
-            <p>Advancing interface limits to 4096-bit width to eliminate interconnect barriers.</p>
-          </div>
-          <!-- Step 4 -->
-          <div class="glass-card glow-border roadmap-deck-step hover-target" style="border-color: var(--gemini-amber);">
-            <h5 style="color: var(--gemini-amber);">2030+</h5>
-            <h4>Optical Waveguides</h4>
-            <p>Replacing copper vias with silicon laser channels to bypass thermal impedance limits.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- SLIDE 15: Citations & References -->
-    <section class="slide" id="slide-citations">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">Citations</span>
-          <h2>Technical References</h2>
-          <div class="header-bar"></div>
-        </div>
-        <div class="citations-three-cards">
-          <!-- Card 1 -->
-          <div class="glass-card hover-target citation-slide-card">
-            <i class="fas fa-file-invoice glow-text-cyan" style="font-size: 1.8rem; margin-bottom: 12px; color: var(--gemini-blue);"></i>
-            <h5>JEDEC Solid State Association</h5>
-            <p>Provides specifications defining 3D vertical stacked interfaces and pin signals config ranges.</p>
-            <a href="https://www.jedec.org" target="_blank" rel="noopener" class="cit-link hover-target" style="color: var(--gemini-blue);">Visit JEDEC <i class="fas fa-external-link-alt"></i></a>
-          </div>
-          <!-- Card 2 -->
-          <div class="glass-card hover-target citation-slide-card">
-            <i class="fas fa-university glow-text-purple" style="font-size: 1.8rem; margin-bottom: 12px; color: var(--gemini-purple);"></i>
-            <h5>IEEE Xplore publications</h5>
-            <p>Analyzed packaging stresses, thermal expansions mismatch, and wafer thinning checks.</p>
-            <a href="https://ieeexplore.ieee.org" target="_blank" rel="noopener" class="cit-link hover-target" style="color: var(--gemini-purple);">Search IEEE <i class="fas fa-external-link-alt"></i></a>
-          </div>
-          <!-- Card 3 -->
-          <div class="glass-card hover-target citation-slide-card">
-            <i class="fas fa-microchip glow-text-pink" style="font-size: 1.8rem; margin-bottom: 12px; color: var(--gemini-pink);"></i>
-            <h5>TSMC CoWoS Technical briefings</h5>
-            <p>Details advanced silicon interposer logic fabrication routines and direct atomic copper bonding.</p>
-            <a href="https://www.tsmc.com" target="_blank" rel="noopener" class="cit-link hover-target" style="color: var(--gemini-pink);">Explore TSMC <i class="fas fa-external-link-alt"></i></a>
           </div>
         </div>
       </div>
@@ -680,7 +508,7 @@
   <!-- Bottom Navigation Control Overlays -->
   <div class="slide-controls-overlay">
     <div class="presentation-progress-wrapper">
-      <span class="presentation-slide-num" id="slideIndicator">Slide 01 of 15</span>
+      <span class="presentation-slide-num" id="slideIndicator">Slide 01 of 08</span>
       <div class="presentation-track-line">
         <div class="presentation-fill-line" id="slideProgressBar"></div>
       </div>

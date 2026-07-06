@@ -126,13 +126,13 @@ function goToSlide(index) {
   if (nextBtn) nextBtn.disabled = (index === slides.length - 1);
 
   // Active slide entries triggers:
-  // 1. Three.js: Pause WebGL rendering loop when not on Slide 5
+  // 1. Three.js: Pause WebGL rendering loop when not on Slide 5 (index 4)
   if (window.setThreeRenderState) {
-    window.setThreeRenderState(index === 5);
+    window.setThreeRenderState(index === 4);
   }
 
-  // 2. Charts: Compile and render charts once Slide 6 is active
-  if (index === 6 && window.triggerChartsRender) {
+  // 2. Charts: Compile and render charts once Slide 6 (index 5) is active
+  if (index === 5 && window.triggerChartsRender) {
     window.triggerChartsRender();
   }
 

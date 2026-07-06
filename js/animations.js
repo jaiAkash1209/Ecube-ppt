@@ -74,7 +74,7 @@ function initGSAPRevealRegistry() {
     if (!activeSlide) return;
 
     // 1. Generic card reveals
-    const cards = activeSlide.querySelectorAll('.glass-card:not(.chart-slide-card):not(.quiz-deck-card):not(.table-slide-card):not(.arch-detail-card), .accel-slide-card, .eco-slide-card');
+    const cards = activeSlide.querySelectorAll('.glass-card:not(.quiz-deck-card):not(.arch-detail-card), .accel-slide-card, .eco-slide-card, .chart-slide-card, .table-slide-card');
     if (cards.length > 0) {
       gsap.killTweensOf(cards);
       gsap.fromTo(cards,
