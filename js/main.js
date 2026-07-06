@@ -106,6 +106,18 @@ function goToSlide(index) {
     slideProgressBar.style.width = progressPercent + '%';
   }
 
+  // Update presenter overlay footer tag visibility (hide on cover and thank you slides)
+  const controlsPresenterTag = document.querySelector('.controls-presenter-tag');
+  if (controlsPresenterTag) {
+    if (index === 0 || index === slides.length - 1) {
+      controlsPresenterTag.style.opacity = '0';
+      controlsPresenterTag.style.pointerEvents = 'none';
+    } else {
+      controlsPresenterTag.style.opacity = '0.65';
+      controlsPresenterTag.style.pointerEvents = 'auto';
+    }
+  }
+
   // Update next/prev buttons status
   const prevBtn = document.getElementById('prevSlideBtn');
   const nextBtn = document.getElementById('nextSlideBtn');
