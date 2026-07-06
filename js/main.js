@@ -113,7 +113,7 @@ function goToSlide(index) {
       controlsPresenterTag.style.opacity = '0';
       controlsPresenterTag.style.pointerEvents = 'none';
     } else {
-      controlsPresenterTag.style.opacity = '0.65';
+      controlsPresenterTag.style.opacity = '0.8';
       controlsPresenterTag.style.pointerEvents = 'auto';
     }
   }

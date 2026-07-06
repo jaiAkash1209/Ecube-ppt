@@ -14,9 +14,9 @@ function initChartsController() {
 
   if (typeof Chart !== 'undefined') {
     // Set custom Chart.js global styles matching the theme
-    Chart.defaults.color = '#8E9FB6';
+    Chart.defaults.color = '#D1D9E0'; /* Brighter label color for projector clarity */
     Chart.defaults.font.family = "'Space Grotesk', sans-serif";
-    Chart.defaults.font.size = 11;
+    Chart.defaults.font.size = 12; /* Increased from 11 */
   } else {
     console.warn('Chart.js is not loaded.');
     return;
@@ -68,7 +68,7 @@ function initChartsController() {
         },
         scales: {
           y: {
-            grid: { color: 'rgba(255, 255, 255, 0.03)' },
+            grid: { color: 'rgba(255, 255, 255, 0.08)' },
             ticks: { font: { family: "'Space Grotesk', sans-serif" } }
           },
           x: {
@@ -122,9 +122,9 @@ function initChartsController() {
         },
         scales: {
           r: {
-            angleLines: { color: 'rgba(255, 255, 255, 0.04)' },
-            grid: { color: 'rgba(255, 255, 255, 0.04)' },
-            pointLabels: { color: '#8E9FB6', font: { family: "'Space Grotesk', sans-serif", size: 11 } },
+            angleLines: { color: 'rgba(255, 255, 255, 0.12)' },
+            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+            pointLabels: { color: '#F5F7FA', font: { family: "'Space Grotesk', sans-serif", size: 12 } },
             ticks: { display: false },
             min: 0,
             max: 100

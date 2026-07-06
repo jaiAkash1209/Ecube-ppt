@@ -9,9 +9,9 @@
 :root {
   --bg-color: #050816;
   --bg-color-rgb: 5, 8, 22;
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --card-border: rgba(255, 255, 255, 0.06);
-  --card-border-glow: rgba(155, 114, 203, 0.25);
+  --card-bg: rgba(12, 15, 28, 0.86); /* Darker, high-contrast card solid background */
+  --card-border: rgba(255, 255, 255, 0.14); /* Much more visible card border line */
+  --card-border-glow: rgba(155, 114, 203, 0.45); /* High-contrast active glow */
   
   /* Gemini Brand Gradient Colors */
   --gemini-blue: #4285F4;
@@ -63,8 +63,8 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   font-family: var(--font-body);
-  font-weight: 300;
-  color: var(--text-muted);
+  font-weight: 450; /* Thicker font weight for high clarity on projectors */
+  color: #E2E8F0; /* High-contrast bright text color */
 }
 
 /* Widescreen Slides Framework */
@@ -208,9 +208,10 @@ p {
 }
 
 /* Text Highlights */
-.glow-text-cyan { text-shadow: 0 0 10px rgba(66, 133, 244, 0.5); }
-.glow-text-purple { text-shadow: 0 0 10px rgba(155, 114, 203, 0.5); }
-.glow-text-pink { text-shadow: 0 0 10px rgba(217, 107, 186, 0.5); }
+/* Text Highlights - optimized for projector readability by removing soft glow blurs */
+.glow-text-cyan { font-weight: 700; color: var(--gemini-blue); }
+.glow-text-purple { font-weight: 700; color: var(--gemini-purple); }
+.glow-text-pink { font-weight: 700; color: var(--gemini-pink); }
 
 /* Shimmering Text Gradient (Gemini Look) */
 .gradient-text {
