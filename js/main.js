@@ -241,8 +241,43 @@ function initArchitectureSVG() {
 }
 
 // -------------------------------------------------------------
+<<<<<<< HEAD
 // Interactive Keyboard MAGIC KEYS Visual Synthesizers
 // -------------------------------------------------------------
+=======
+// Interactive Keyboard MAGIC KEYS Visual/Audio Synthesizers
+// -------------------------------------------------------------
+let audioCtx = null;
+let masterGain = null;
+let audioInitialized = false;
+
+function initAudioContext() {
+  if (audioInitialized) return;
+  try {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    audioCtx = new AudioContextClass();
+    
+    // Master Dynamics Compressor to prevent clipping distortion on high boosts
+    const compressor = audioCtx.createDynamicsCompressor();
+    compressor.threshold.setValueAtTime(-10, audioCtx.currentTime);
+    compressor.knee.setValueAtTime(25, audioCtx.currentTime);
+    compressor.ratio.setValueAtTime(10, audioCtx.currentTime);
+    compressor.attack.setValueAtTime(0.003, audioCtx.currentTime);
+    compressor.release.setValueAtTime(0.06, audioCtx.currentTime);
+    
+    masterGain = audioCtx.createGain();
+    masterGain.connect(compressor);
+    compressor.connect(audioCtx.destination);
+    
+    masterGain.gain.setValueAtTime(2.5, audioCtx.currentTime); // 250% boosted volume
+    audioInitialized = true;
+  } catch (e) {}
+}
+
+document.addEventListener('click', initAudioContext, { once: true });
+document.addEventListener('keydown', initAudioContext, { once: true });
+
+>>>>>>> 17b1c741417d4d73f07e6ae400fd30cfa03222ad
 document.addEventListener('keydown', (e) => {
   const key = e.key.toLowerCase();
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
@@ -267,6 +302,10 @@ document.addEventListener('keydown', (e) => {
 });
 
 function triggerSonicSparkBoom() {
+<<<<<<< HEAD
+=======
+  playSonicBoomAudio();
+>>>>>>> 17b1c741417d4d73f07e6ae400fd30cfa03222ad
   const layer = document.getElementById('magic-effects-layer');
   if (!layer) return;
 
@@ -311,7 +350,43 @@ function triggerSonicSparkBoom() {
   }
 }
 
+<<<<<<< HEAD
 function triggerMatrixColorShift() {
+=======
+function playSonicBoomAudio() {
+  if (!audioInitialized || !audioCtx) return;
+  try {
+    const now = audioCtx.currentTime;
+    
+    const sub = audioCtx.createOscillator();
+    const subGain = audioCtx.createGain();
+    sub.type = 'sine';
+    sub.frequency.setValueAtTime(150, now);
+    sub.frequency.exponentialRampToValueAtTime(30, now + 0.8);
+    subGain.gain.setValueAtTime(0.8, now);
+    subGain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+    sub.connect(subGain);
+    subGain.connect(masterGain);
+    sub.start(now);
+    sub.stop(now + 0.85);
+
+    const chime = audioCtx.createOscillator();
+    const chimeGain = audioCtx.createGain();
+    chime.type = 'triangle';
+    chime.frequency.setValueAtTime(1200, now);
+    chime.frequency.exponentialRampToValueAtTime(2800, now + 0.4);
+    chimeGain.gain.setValueAtTime(0.3, now);
+    chimeGain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+    chime.connect(chimeGain);
+    chimeGain.connect(masterGain);
+    chime.start(now);
+    chime.stop(now + 0.55);
+  } catch(e){}
+}
+
+function triggerMatrixColorShift() {
+  playGlitchAudio();
+>>>>>>> 17b1c741417d4d73f07e6ae400fd30cfa03222ad
   const app = document.getElementById('slidesContainer');
   if (app) {
     app.classList.add('matrix-glitch');
@@ -338,7 +413,32 @@ function triggerMatrixColorShift() {
   }
 }
 
+<<<<<<< HEAD
 function triggerAuroralRippleWave() {
+=======
+function playGlitchAudio() {
+  if (!audioInitialized || !audioCtx) return;
+  try {
+    const now = audioCtx.currentTime;
+    for (let i = 0; i < 6; i++) {
+      const time = now + (i * 0.06);
+      const osc = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(100 + Math.random() * 1200, time);
+      gainNode.gain.setValueAtTime(0.08, time);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, time + 0.08);
+      osc.connect(gainNode);
+      gainNode.connect(masterGain);
+      osc.start(time);
+      osc.stop(time + 0.09);
+    }
+  } catch(e){}
+}
+
+function triggerAuroralRippleWave() {
+  playAuroralAudio();
+>>>>>>> 17b1c741417d4d73f07e6ae400fd30cfa03222ad
   const layer = document.getElementById('magic-effects-layer');
   if (!layer) return;
 
@@ -384,7 +484,33 @@ function triggerAuroralRippleWave() {
   spawnTrail();
 }
 
+<<<<<<< HEAD
 function triggerGalaxyStarfall() {
+=======
+function playAuroralAudio() {
+  if (!audioInitialized || !audioCtx) return;
+  try {
+    const now = audioCtx.currentTime;
+    const freqs = [220.00, 277.18, 329.63, 440.00];
+    freqs.forEach((f, idx) => {
+      const osc = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(f, now);
+      gainNode.gain.setValueAtTime(0, now);
+      gainNode.gain.linearRampToValueAtTime(0.08, now + 0.3);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
+      osc.connect(gainNode);
+      gainNode.connect(masterGain);
+      osc.start(now);
+      osc.stop(now + 1.9);
+    });
+  } catch(e){}
+}
+
+function triggerGalaxyStarfall() {
+  playStarfallAudio();
+>>>>>>> 17b1c741417d4d73f07e6ae400fd30cfa03222ad
   const layer = document.getElementById('magic-effects-layer');
   if (!layer) return;
 
@@ -422,7 +548,41 @@ function triggerGalaxyStarfall() {
   }
 }
 
+<<<<<<< HEAD
 function triggerImplosionOrbFlare() {
+=======
+function playStarfallAudio() {
+  if (!audioInitialized || !audioCtx) return;
+  try {
+    const now = audioCtx.currentTime;
+    const notes = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
+    notes.forEach((f, idx) => {
+      const time = now + (idx * 0.12);
+      const osc = audioCtx.createOscillator();
+      const panner = audioCtx.createStereoPanner();
+      const gainNode = audioCtx.createGain();
+      
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(f, time);
+      panner.pan.setValueAtTime(-0.8 + (idx * 0.32), time);
+      
+      gainNode.gain.setValueAtTime(0, time);
+      gainNode.gain.linearRampToValueAtTime(0.12, time + 0.02);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, time + 0.5);
+      
+      osc.connect(panner);
+      panner.connect(gainNode);
+      gainNode.connect(masterGain);
+      
+      osc.start(time);
+      osc.stop(time + 0.6);
+    });
+  } catch(e){}
+}
+
+function triggerImplosionOrbFlare() {
+  playImplosionAudio();
+>>>>>>> 17b1c741417d4d73f07e6ae400fd30cfa03222ad
   const layer = document.getElementById('magic-effects-layer');
   if (!layer) return;
 
@@ -474,3 +634,68 @@ function triggerImplosionOrbFlare() {
     setTimeout(() => flash.remove(), 600);
   }, 800);
 }
+<<<<<<< HEAD
+=======
+
+// Global pop feedback click sound
+function playUIClickSound() {
+  if (!audioInitialized || !audioCtx) return;
+  try {
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(900, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1500, audioCtx.currentTime + 0.04);
+    
+    gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+    gainNode.gain.linearRampToValueAtTime(0.03, audioCtx.currentTime + 0.005);
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
+    
+    osc.connect(gainNode);
+    gainNode.connect(masterGain);
+    
+    osc.start(0);
+    osc.stop(audioCtx.currentTime + 0.1);
+  } catch(e){}
+}
+
+document.querySelectorAll('.glass-card, .btn-neon, .btn-ctrl, .btn-op').forEach(el => {
+  el.addEventListener('click', playUIClickSound);
+});
+
+function playImplosionAudio() {
+  if (!audioInitialized || !audioCtx) return;
+  try {
+    const now = audioCtx.currentTime;
+    
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(80, now);
+    osc.frequency.exponentialRampToValueAtTime(1000, now + 0.8);
+    gainNode.gain.setValueAtTime(0, now);
+    gainNode.gain.linearRampToValueAtTime(0.15, now + 0.6);
+    gainNode.gain.linearRampToValueAtTime(0.001, now + 0.8);
+    osc.connect(gainNode);
+    gainNode.connect(masterGain);
+    osc.start(now);
+    osc.stop(now + 0.82);
+
+    setTimeout(() => {
+      if (!audioInitialized || !audioCtx) return;
+      const crash = audioCtx.createOscillator();
+      const crashGain = audioCtx.createGain();
+      crash.type = 'sawtooth';
+      crash.frequency.setValueAtTime(120, audioCtx.currentTime);
+      crash.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.5);
+      crashGain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+      crashGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+      crash.connect(crashGain);
+      crashGain.connect(masterGain);
+      crash.start(audioCtx.currentTime);
+      crash.stop(audioCtx.currentTime + 0.65);
+    }, 800);
+  } catch(e){}
+}
+>>>>>>> 17b1c741417d4d73f07e6ae400fd30cfa03222ad
