@@ -1,484 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PitCrew Connect: On-Demand Digital Mechanic Platform Presentation. Real-time emergency dispatching, verified mechanic onboarding, and live route coordination.">
-  <title>PitCrew Connect - Digital Mechanic Platform Presentation</title>
-  
-  <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  
-  <!-- AOS (Animate on Scroll) CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-  
-  <!-- FontAwesome for technical icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>PitCrew Connect: On-Demand Mechanic Platform Showcase</title>
+  <meta name="description"
+    content="Experience the technology stack, system architecture, database design, and real-time operations showcase of the PitCrew Connect digital mechanic platform.">
+  <meta name="theme-color" content="#06060c">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+  <!-- Background Glows -->
+  <div class="bg-glow bg-glow-purple"></div>
+  <div class="bg-glow bg-glow-blue"></div>
 
-  <!-- Shifting Gemini Mesh Background -->
-  <div class="mesh-bg"></div>
+  <!-- Full-Screen Slide Transition Color Flash Overlay -->
+  <div id="slide-transition-flash" class="transition-flash"></div>
 
-  <!-- Particles Overlay Background -->
-  <div id="particles-js"></div>
-
-  <!-- Fullscreen Slide Deck Container -->
-  <div class="slides-container" id="slidesContainer">
-
-    <!-- SLIDE 1: Title Slide (Cover Slide) -->
-    <section class="slide active" id="slide-hero">
-      <div class="bg-grid"></div>
-      <div class="bg-radial-glow"></div>
-      <div class="container">
-        <div class="hero-slide-layout">
-          <div class="hero-slide-text">
-            <div class="hero-badge">On-Demand Digital Mechanic Platform</div>
-            <h1>
-              <span class="gradient-text" id="typingText"></span><span class="typing-cursor">|</span>
-            </h1>
-            <div class="presenter-tag" style="margin-bottom: 25px; font-family: var(--font-sub); font-size: 1.15rem; color: var(--gemini-purple); font-weight: 600; line-height: 1.75;">
-              Presented by: <span style="color: var(--white-text); font-size: 1.45rem; text-shadow: 0 0 10px rgba(155, 114, 203, 0.45); font-weight: 700;">Jai Akash T</span><br>
-              Register Number: <span style="color: var(--white-text); font-size: 1.25rem; font-weight: 700;">243115106037</span><br>
-              Class Section: <span style="color: var(--white-text); font-size: 1.25rem; font-weight: 700;">ECE-3A</span>
-            </div>
-            <p style="margin-bottom: 25px;">
-              An integrated role-based system connecting stranded drivers, verified mechanics, and operational admins in a real-time dispatch and tracking network.
-            </p>
-            <div class="hero-actions" style="display: flex; gap: 15px; align-items: center;">
-              <button class="btn-neon hover-target" onclick="nextSlide();">Start presentation</button>
-              <button class="btn-neon btn-neon-pink hover-target" onclick="goToSlide(4);">Launch 3D Model</button>
-            </div>
-          </div>
-          <div class="hero-slide-visual">
-            <div class="hero-slide-chip float-animation" style="border-color: var(--gemini-purple); box-shadow: 0 10px 40px rgba(155, 114, 203, 0.35); border-radius: 20px; overflow: hidden;">
-              <img src="assets/images/pitcrew_glow.png" alt="PitCrew Connect Glow" class="hero-slide-img">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 2: Market Problem (The Bottleneck) -->
-    <section class="slide" id="slide-intro">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">Overview</span>
-          <h2>The Roadside Assistance Bottleneck</h2>
-          <div class="header-bar"></div>
-        </div>
-        <div class="slide-grid-2">
-          <div class="glass-card glow-border" style="border-color: var(--gemini-pink);">
-            <h3>Why Mobility Support Stalls</h3>
-            <p style="font-size: 0.92rem; margin-bottom: 12px;">
-              <strong>The Layman Analogy:</strong> Think of traditional roadside assistance like sending a physical letter to call for a delivery. Drivers must call a center, explain their issue, wait for calls back, and guess when help arrives.
-            </p>
-            <p style="font-size: 0.92rem; margin-bottom: 12px;">
-              <strong>The PitCrew Connect Solution:</strong> Instead of slow brokers, PitCrew Connect acts as a real-time dispatcher. It instantly coordinates breakdown positions with available mechanic dashboards, tracking routing live.
-            </p>
-            <div class="intro-stats-row">
-              <div class="intro-stat-item">
-                <span class="intro-stat-val counter" data-target="98.4">0</span><span class="intro-stat-val">%</span>
-                <span class="intro-stat-lbl">Dispatch Match Rate</span>
-              </div>
-              <div class="intro-stat-item">
-                <span class="intro-stat-val counter" data-target="12.5">0</span><span class="intro-stat-val"> Min</span>
-                <span class="intro-stat-lbl">Average Response Time</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="glass-card glow-border" style="border-color: var(--gemini-blue);">
-            <h3>Call Centers vs. Brokers vs. PitCrew</h3>
-            <div class="intro-comp-table">
-              <div class="intro-comp-row row-header">
-                <div>Metric</div>
-                <div>Call Center</div>
-                <div>Broker App</div>
-                <div>PitCrew Connect</div>
-              </div>
-              <div class="intro-comp-row">
-                <div>Fulfillment</div>
-                <div>45-60 Mins</div>
-                <div>30 Mins</div>
-                <div class="highlight-cyan font-bold" style="color: var(--gemini-blue);">12.5 Mins</div>
-              </div>
-              <div class="intro-comp-row">
-                <div>Routing</div>
-                <div>None</div>
-                <div>Static GPS</div>
-                <div class="highlight-cyan font-bold" style="color: var(--gemini-blue);">Live Dynamic</div>
-              </div>
-              <div class="intro-comp-row">
-                <div>Safety</div>
-                <div>Unvetted</div>
-                <div>Basic Check</div>
-                <div class="highlight-cyan font-bold" style="color: var(--gemini-blue);">Identity Vetted</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 3: Evolution Timeline -->
-    <section class="slide" id="slide-timeline">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">Timeline</span>
-          <h2>Roadside Assistance Platform Evolution</h2>
-          <div class="header-bar"></div>
-        </div>
-        
-        <div class="timeline-deck-container">
-          <div class="timeline-deck-line"></div>
-          
-          <div class="timeline-deck-item">
-            <div class="timeline-deck-node"></div>
-            <div class="timeline-deck-card glass-card">
-              <div class="timeline-year text-gradient-purple">Before 2010</div>
-              <h4>Legacy Directories</h4>
-              <p>Stranded drivers rely on physical directories and calling telephone hotlines for flatbed trucks.</p>
-            </div>
-          </div>
-          
-          <div class="timeline-deck-item">
-            <div class="timeline-deck-node"></div>
-            <div class="timeline-deck-card glass-card">
-              <div class="timeline-year text-gradient-blue">2015</div>
-              <h4>Web Portals</h4>
-              <p>Garages host static web catalogs. Drivers call businesses individually to request local quotes.</p>
-            </div>
-          </div>
-          
-          <div class="timeline-deck-item">
-            <div class="timeline-deck-node"></div>
-            <div class="timeline-deck-card glass-card">
-              <div class="timeline-year text-gradient-pink">2020</div>
-              <h4>Static Broker Apps</h4>
-              <p>Centralized dispatch portals connect garages, but coordinate manually, leading to dispatch lag.</p>
-            </div>
-          </div>
-          
-          <div class="timeline-deck-item">
-            <div class="timeline-deck-node"></div>
-            <div class="timeline-deck-card glass-card">
-              <div class="timeline-year text-gradient-amber">2026+</div>
-              <h4>Automated Marketplace</h4>
-              <p>PitCrew Connect launches: Instant role-based intake, background identity checks, and real-time mapping.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 4: Platform Architecture (Interactive SVGs) -->
-    <section class="slide" id="slide-architecture">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">Structure</span>
-          <h2>Platform System Architecture</h2>
-          <div class="header-bar"></div>
-        </div>
-        <div class="slide-grid-2">
-          <!-- Left: Detailed Interactive SVG of Database/Stack -->
-          <div class="glass-card" style="padding: 15px;">
-            <svg viewBox="0 0 450 320" width="100%" height="100%" id="archSvg">
-              <!-- Background Grid -->
-              <rect x="10" y="10" width="430" height="300" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-              
-              <!-- Drivers Node -->
-              <g class="svg-part hover-target" id="part-interposer" style="cursor: pointer;">
-                <rect x="30" y="30" width="390" height="40" rx="6" fill="#181a26" stroke="#4285F4" stroke-width="1.5"/>
-                <text x="225" y="55" fill="#F5F7FA" font-family="'Space Grotesk'" font-size="13" font-weight="bold" text-anchor="middle">Drivers Front-End Client (Intake Channel)</text>
-              </g>
-
-              <!-- Node Server Node -->
-              <g class="svg-part hover-target" id="part-gpu" style="cursor: pointer;">
-                <rect x="50" y="100" width="160" height="120" rx="8" fill="#2d1754" stroke="#9B72CB" stroke-width="1.5"/>
-                <text x="130" y="150" fill="#F5F7FA" font-family="'Space Grotesk'" font-size="12" font-weight="bold" text-anchor="middle">Node.js / Express</text>
-                <text x="130" y="170" fill="#F5F7FA" font-family="'Space Grotesk'" font-size="12" font-weight="bold" text-anchor="middle">Backend Engine</text>
-              </g>
-
-              <!-- Mechanics Node -->
-              <g class="svg-part hover-target" id="part-base-die" style="cursor: pointer;">
-                <rect x="240" y="100" width="160" height="45" rx="6" fill="#1b2e3c" stroke="#00E5FF" stroke-width="1.5"/>
-                <text x="320" y="128" fill="#F5F7FA" font-family="'Space Grotesk'" font-size="12" font-weight="bold" text-anchor="middle">Mechanics Dispatch Client</text>
-              </g>
-
-              <!-- Admin Control Node -->
-              <g class="svg-part hover-target" id="part-dram-dies" style="cursor: pointer;">
-                <rect x="240" y="175" width="160" height="45" rx="6" fill="#2a1b3c" stroke="#D96BBA" stroke-width="1.5"/>
-                <text x="320" y="202" fill="#F5F7FA" font-family="'Space Grotesk'" font-size="12" font-weight="bold" text-anchor="middle">Admins Operations Control</text>
-              </g>
-
-              <!-- PostgreSQL Database Node -->
-              <g class="svg-part hover-target" id="part-tsvs" style="cursor: pointer;">
-                <rect x="30" y="250" width="390" height="40" rx="6" fill="#1b2a26" stroke="#F4B400" stroke-width="1.5"/>
-                <text x="225" y="275" fill="#F5F7FA" font-family="'Space Grotesk'" font-size="13" font-weight="bold" text-anchor="middle">PostgreSQL Database (Identity & Booking Pool)</text>
-              </g>
-            </svg>
-          </div>
-
-          <!-- Right: Component Inspector Details -->
-          <div class="glass-card arch-detail-card glow-border" style="border-color: var(--gemini-purple); display: flex; flex-direction: column; justify-content: center;">
-            <div id="arch-default-info">
-              <i class="fa-solid fa-circle-info" style="font-size: 2.5rem; color: var(--gemini-purple); margin-bottom: 15px; display: block; text-align: center;"></i>
-              <h3 style="text-align: center;">Architecture Inspector</h3>
-              <p style="text-align: center; font-size: 0.95rem;">Click on any layer of the platform blueprint schematic to inspect its functional scope, data role, and implementation technologies.</p>
-            </div>
-            <div id="arch-detail-content" class="hidden">
-              <h3 id="arch-part-title" class="text-gradient-purple" style="margin-bottom: 10px;">Component</h3>
-              <p id="arch-part-desc" style="font-size: 0.9rem; margin-bottom: 15px;">Description details go here.</p>
-              <div style="display: grid; grid-template-columns: 1fr; gap: 8px; font-size: 0.85rem;">
-                <div><strong>System Role:</strong> <span id="arch-part-role" class="highlight-cyan" style="color: var(--gemini-blue);">Scheduler</span></div>
-                <div><strong>Tech Stack:</strong> <span id="arch-part-tech" class="highlight-pink" style="color: var(--gemini-pink);">Node.js</span></div>
-              </div>
-              <button class="btn-neon hover-target" id="archResetBtn" style="margin-top: 15px; padding: 6px 14px; font-size: 0.8rem;">Reset Inspector</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 5: 3D Operations Dispatch Simulator (Three.js WebGL) -->
-    <section class="slide" id="slide-stack">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">Simulation</span>
-          <h2>3D Operations Dispatch Simulator</h2>
-          <div class="header-bar"></div>
-        </div>
-        <div class="slide-grid-three">
-          <!-- Left: Controls -->
-          <div class="glass-card glow-border" style="border-color: var(--gemini-purple); flex: 1.2;">
-            <h3>Intelligent Dispatch Engine</h3>
-            <p style="font-size: 0.85rem; margin-bottom: 15px;">
-              Observe how data packets flow across the network based on the four system dispatch operations.
-            </p>
-            
-            <div class="ops-controls-column" style="display: flex; flex-direction: column; gap: 8px;">
-              <button class="btn-op hover-target active" id="btn-op-fetch" onclick="setOpState('FETCH')">
-                <i class="fa-solid fa-clipboard-list"></i>
-                <div>
-                  <strong>01. Drivers Intake</strong>
-                  <span>Breakdown coords and issue details sent to hub</span>
-                </div>
-              </button>
-              <button class="btn-op hover-target" id="btn-op-read" onclick="setOpState('READ')">
-                <i class="fa-solid fa-magnifying-glass-location"></i>
-                <div>
-                  <strong>02. Database Match</strong>
-                  <span>nearest qualified mechanic queried</span>
-                </div>
-              </button>
-              <button class="btn-op hover-target" id="btn-op-write" onclick="setOpState('WRITE')">
-                <i class="fa-solid fa-truck-ramp-box"></i>
-                <div>
-                  <strong>03. Dispatch Routing</strong>
-                  <span>Acceptance confirmed & mechanic dispatches</span>
-                </div>
-              </button>
-              <button class="btn-op hover-target" id="btn-op-refresh" onclick="setOpState('REFRESH')">
-                <i class="fa-solid fa-circle-check"></i>
-                <div>
-                  <strong>04. Service Completed</strong>
-                  <span>System coordinates refreshed & transaction logged</span>
-                </div>
-              </button>
-            </div>
-          </div>
-
-          <!-- Center: 3D Canvas -->
-          <div class="glass-card" style="flex: 2.2; position: relative; padding: 0; overflow: hidden; height: 100%;">
-            <div id="three-container" style="width: 100%; height: 100%;"></div>
-            <div class="three-loader" id="threeLoader">
-              <i class="fas fa-circle-notch fa-spin"></i>
-              <span>Starting WebGL engine...</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 6: Performance & Benchmarks (Charts.js) -->
-    <section class="slide" id="slide-charts">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">Data Benchmarks</span>
-          <h2>Platform Performance Metrics</h2>
-          <div class="header-bar"></div>
-        </div>
-        <div class="slide-grid-2">
-          <!-- Left: Chart.js Bar Chart -->
-          <div class="glass-card glow-border" style="border-color: var(--gemini-blue); height: 100%; display: flex; flex-direction: column;">
-            <h3 style="margin-bottom: 15px;">Fulfillment Delay Comparison</h3>
-            <div style="flex: 1; position: relative;">
-              <canvas id="bandwidthChart"></canvas>
-            </div>
-            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 10px; text-align: center;">
-              Average dispatch-to-arrival time comparison (measured in minutes).
-            </p>
-          </div>
-
-          <!-- Right: Summary Grid -->
-          <div class="glass-card glow-border" style="border-color: var(--gemini-pink); display: flex; flex-direction: column; justify-content: space-between;">
-            <h3>Scale Performance Specifications</h3>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
-              <div class="tech-spec-item" style="border-left: 3px solid var(--gemini-blue); padding-left: 10px;">
-                <h4 style="font-size: 0.95rem; margin-bottom: 2px;">Avg Dispatch Lag</h4>
-                <p style="font-size: 1.4rem; font-weight: bold; color: var(--gemini-blue);">2.4 Minutes</p>
-              </div>
-              <div class="tech-spec-item" style="border-left: 3px solid var(--gemini-purple); padding-left: 10px;">
-                <h4 style="font-size: 0.95rem; margin-bottom: 2px;">Vetting Rate</h4>
-                <p style="font-size: 1.4rem; font-weight: bold; color: var(--gemini-purple);">100% Identity Vetted</p>
-              </div>
-              <div class="tech-spec-item" style="border-left: 3px solid var(--gemini-pink); padding-left: 10px;">
-                <h4 style="font-size: 0.95rem; margin-bottom: 2px;">GPS Latency</h4>
-                <p style="font-size: 1.4rem; font-weight: bold; color: var(--gemini-pink);">&lt; 150ms</p>
-              </div>
-              <div class="tech-spec-item" style="border-left: 3px solid var(--gemini-amber); padding-left: 10px;">
-                <h4 style="font-size: 0.95rem; margin-bottom: 2px;">Server Uptime</h4>
-                <p style="font-size: 1.4rem; font-weight: bold; color: var(--gemini-amber);">99.98%</p>
-              </div>
-            </div>
-            
-            <div class="glass-card" style="padding: 10px; background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.06); font-size: 0.85rem; line-height: 1.5;">
-              <strong>Key Takeaway:</strong> By transitioning dispatcher roles from legacy call center phones to automated node queues, response latency falls by 72% while ensuring 100% of network mechanics are vetted.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 7: Vetting & Safety Controls -->
-    <section class="slide" id="slide-thermal">
-      <div class="container">
-        <div class="slide-header">
-          <span class="slide-tag">Compliance & Safety</span>
-          <h2>Mechanic Verification & Safety Controls</h2>
-          <div class="header-bar"></div>
-        </div>
-        <div class="slide-grid-2">
-          <!-- Left: Verification Pipeline -->
-          <div class="glass-card glow-border" style="border-color: var(--gemini-blue);">
-            <h3>Vetted Onboarding Workflow</h3>
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
-              <div class="mfg-process-step" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px;">
-                <strong>01. Credentials Upload</strong>
-                <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Mechanics submit business details, mechanic certifications, and driver licenses during registration.</p>
-              </div>
-              <div class="mfg-process-step" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px;">
-                <strong>02. Admin Background Check</strong>
-                <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Ops admins review document credentials via the secure operations review panel before activation.</p>
-              </div>
-              <div class="mfg-process-step" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px;">
-                <strong>03. Gateway Activation</strong>
-                <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Vetted profiles enter the live matching pool, unlocking route coordinate access and dispatches.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: System Safety Measures -->
-          <div class="glass-card glow-border" style="border-color: var(--gemini-pink);">
-            <h3>Ops Security Controls</h3>
-            <p style="font-size: 0.9rem; margin-bottom: 15px;">
-              Role isolation prevents mechanics from accessing user lists, and keeps user databases secure.
-            </p>
-            <div style="background: rgba(12, 15, 28, 0.95); border: 1px solid rgba(255,255,255,0.06); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-              <div class="thermal-die-layer hot-zone" style="background: rgba(217, 107, 186, 0.18); border: 1px solid rgba(217, 107, 186, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 5px; color: #fff;">
-                Admin Controller Dashboard <span style="color: var(--gemini-pink);">Role: ADMIN</span>
-              </div>
-              <div class="thermal-die-layer warm-zone" style="background: rgba(66, 133, 244, 0.12); border: 1px solid rgba(66, 133, 244, 0.25); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 8px; color: #fff;">
-                Mechanic Dispatch Hub <span style="color: var(--gemini-blue);">Role: MECHANIC</span>
-              </div>
-              <div class="thermal-scale-bar" style="display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: var(--text-muted);">
-                <span>Client (User)</span>
-                <div class="thermal-scale-gradient" style="flex: 1; margin: 0 10px; height: 5px; background: linear-gradient(90deg, #4285F4, #9B72CB, #D96BBA); border-radius: 3px;"></div>
-                <span>Server (Admin)</span>
-              </div>
-            </div>
-            <ul style="font-size: 0.85rem; color: var(--text-muted); padding-left: 20px; line-height: 1.6;">
-              <li>Password encryption enforced via bcryptjs hashing.</li>
-              <li>Live WebSockets use token validation to secure transmission channels.</li>
-              <li>Stripe-ready secure ledger models coordinate billing.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 8: Thank You / Closing -->
-    <section class="slide" id="slide-ty">
-      <div class="bg-radial-glow"></div>
-      <div class="container" style="display: flex; justify-content: center; align-items: center; height: 100%;">
-        <div class="thank-you-layout" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;">
-          <div class="hero-badge" style="font-size: 1rem; padding: 6px 18px; border-radius: 20px; background: rgba(155, 114, 203, 0.1); border: 1.5px solid var(--gemini-purple); color: var(--gemini-purple); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">
-            The End
-          </div>
-          <h2 class="gradient-text" style="font-size: 6.5rem; font-weight: 900; letter-spacing: 8px; text-align: center; text-shadow: 0 0 40px rgba(155, 114, 203, 0.35); margin: 0;">
-            THANK YOU
-          </h2>
-          <div class="conclusion-graphic" style="margin-top: 15px; position: relative; width: 120px; height: 120px; display: flex; justify-content: center; align-items: center;">
-            <div class="glowing-orb" style="position: absolute; width: 60px; height: 60px; background: radial-gradient(circle, rgba(155,114,203,0.8) 0%, rgba(217,107,186,0.3) 60%, transparent 100%); border-radius: 50%; filter: blur(8px); animation: pulse-glow-helper 2.5s infinite alternate;"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+  <!-- Global Ambient Equalizer Background Activity -->
+  <div class="ambient-visualizer">
+    <div class="eq-bar bar-1"></div>
+    <div class="eq-bar bar-2"></div>
+    <div class="eq-bar bar-3"></div>
+    <div class="eq-bar bar-4"></div>
+    <div class="eq-bar bar-5"></div>
+    <div class="eq-bar bar-6"></div>
+    <div class="eq-bar bar-7"></div>
+    <div class="eq-bar bar-8"></div>
+    <div class="eq-bar bar-9"></div>
+    <div class="eq-bar bar-10"></div>
+    <div class="eq-bar bar-11"></div>
+    <div class="eq-bar bar-12"></div>
   </div>
 
-  <!-- Bottom Navigation Control Overlays -->
-  <div class="slide-controls-overlay">
-    <div class="presentation-progress-wrapper">
-      <span class="presentation-slide-num" id="slideIndicator">Slide 01 of 08</span>
-      <div class="presentation-track-line">
-        <div class="presentation-fill-line" id="slideProgressBar"></div>
-      </div>
-    </div>
-    
-    <div class="controls-presenter-tag" style="font-family: var(--font-sub); font-size: 0.75rem; color: #B0C4DE; opacity: 0.8; font-weight: 500; letter-spacing: 0.5px; transition: opacity 0.3s ease;">
-      Jai Akash T (243115106037) | ECE-3A | PitCrew Connect Platform
-    </div>
-
-    <div class="presenter-buttons">
-      <a href="exp.html" class="btn-ctrl hover-target" aria-label="Export to PowerPoint" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none; color: inherit;">
-        <i class="fas fa-file-powerpoint"></i>
-      </a>
-      <button class="btn-ctrl hover-target" id="fullscreenBtn" aria-label="Toggle Fullscreen">
-        <i class="fas fa-expand"></i>
-      </button>
-      <button class="btn-ctrl hover-target" id="prevSlideBtn" aria-label="Previous Slide">
-        <i class="fas fa-arrow-left"></i>
-      </button>
-      <button class="btn-ctrl hover-target" id="nextSlideBtn" aria-label="Next Slide">
-        <i class="fas fa-arrow-right"></i>
-      </button>
-    </div>
+  <!-- Global Ambient Sound Particles / Floating Spores -->
+  <div class="ambient-spores">
+    <div class="spore spore-1"></div>
+    <div class="spore spore-2"></div>
+    <div class="spore spore-3"></div>
+    <div class="spore spore-4"></div>
+    <div class="spore spore-5"></div>
+    <div class="spore spore-6"></div>
+    <div class="spore spore-7"></div>
+    <div class="spore spore-8"></div>
   </div>
 
-  <!-- Fullscreen Magic Effects Overlay Layer [NEW] -->
+  <div class="app-container">
+    <!-- Main Presentation Area -->
+    <main class="slide-deck">
+
+      <!-- Slide 1: Title Slide -->
+      <section id="slide-1" class="slide active">
+        <div class="slide-content title-layout">
+          <div class="title-text-group">
+            <div class="badge">Platform Showcase</div>
+            <h1>PitCrew <br><span class="text-glow">Connect</span></h1>
+            <p class="subtitle">An integrated role-based system connecting stranded drivers, verified mechanics, and operational admins in a real-time dispatch and tracking network.</p>
+            <div class="title-meta">
+              <span>Presented with Interactive Operations Demos</span>
+            </div>
+
+            <div class="presenter-card glass-card">
+              <div class="presenter-name">Jai Akash T</div>
+              <div class="presenter-details">Reg No: 243115106037 | Class: ECE-3A</div>
+            </div>
+          </div>
+          <div class="title-visual">
+            <div class="visualizer-container glass-card">
+              <canvas id="canvas-hero-visualizer"></canvas>
+              <div class="wave-particles"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 2: The Roadside Assistance Bottleneck -->
+      <section id="slide-2" class="slide">
+        <div class="slide-content split-layout">
+          <div class="info-pane">
+            <div class="badge">Platform Challenge</div>
+            <h2>Roadside Dispatch Bottlenecks</h2>
+            <p class="lead">How traditional dispatch systems fail due to manual coordinate relays and phone broker lags.</p>
+
+            <div class="feature-bullets">
+              <div class="bullet-item">
+                <div class="bullet-icon purple-bg">1</div>
+                <div>
+                  <strong>Mono Dispatching (Legacy Phone Call):</strong>
+                  <p>Flat wait-times. Stranded drivers wait on phone brokers, explain locations blindly, and guess ETAs.</p>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="bullet-icon cyan-bg">2</div>
+                <div>
+                  <strong>Stereo Intake (Consolidated garage portals):</strong>
+                  <p>Coordinates relayed via static listings. Bookings route manually, causing coordinate mismatch lags.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-pane">
+            <div class="demo-card glass-card">
+              <h3>Intake Mode Comparison</h3>
+              <p class="demo-description">Toggle modes to simulate how client coordinates propagate to responders.</p>
+
+              <!-- Visual Stage -->
+              <div class="soundstage mono-stereo-stage">
+                <div class="listener-head">
+                  <div class="ear left-ear"></div>
+                  <div class="ear right-ear"></div>
+                </div>
+                <div class="speaker-source left-speaker active">
+                  <div class="speaker-cone"></div>
+                  <div class="sound-rings l-rings"></div>
+                </div>
+                <div class="speaker-source right-speaker active">
+                  <div class="speaker-cone"></div>
+                  <div class="sound-rings r-rings"></div>
+                </div>
+                <div id="sound-node-stereo" class="sound-node animate-sweep"></div>
+              </div>
+
+              <!-- Controls -->
+              <div class="demo-controls">
+                <div class="radio-toggle">
+                  <input type="radio" id="mode-mono" name="mono-stereo-mode" value="mono">
+                  <label for="mode-mono">Legacy Call</label>
+                  <input type="radio" id="mode-stereo" name="mono-stereo-mode" value="stereo" checked>
+                  <label for="mode-stereo">Consolidated Portal</label>
+                </div>
+                <button id="btn-play-stereo" class="btn-neon">Run Dispatch Sweep</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: Regional Dispatch Centers -->
+      <section id="slide-3" class="slide">
+        <div class="slide-content split-layout">
+          <div class="info-pane">
+            <div class="badge">Operations Expansion</div>
+            <h2>Regional Dispatch Nodes</h2>
+            <p class="lead">Expanding the service coordinates from a localized grid to a multi-channel network.</p>
+
+            <div class="feature-bullets">
+              <div class="bullet-item">
+                <div class="bullet-icon pink-bg">1</div>
+                <div>
+                  <strong>Regional Coverage:</strong>
+                  <p>Coordinates mapped and routed across five directional towers, matching regional responders.</p>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="bullet-icon blue-bg">2</div>
+                <div>
+                  <strong>Database Ledger:</strong>
+                  <p>Active driver logs are indexed and archived securely, enabling dispatchers to track response paths.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-pane">
+            <div class="demo-card glass-card">
+              <h3>Tower Dispatch Simulation</h3>
+              <p class="demo-description">Click on any regional dispatch tower node to trigger a simulated GPS ping wave.</p>
+
+              <!-- Surround sound stage layout -->
+              <div class="soundstage surround-stage">
+                <!-- Center speaker (Driver) -->
+                <div class="speaker-source speaker-center" data-speaker="center">
+                  <span class="spk-label">Center (Driver)</span>
+                </div>
+                <!-- Left/Right Front -->
+                <div class="speaker-source speaker-lf" data-speaker="leftFront">
+                  <span class="spk-label">L-Front</span>
+                </div>
+                <div class="speaker-source speaker-rf" data-speaker="rightFront">
+                  <span class="spk-label">R-Front</span>
+                </div>
+                <!-- Left/Right Surround -->
+                <div class="speaker-source speaker-ls" data-speaker="leftSurround">
+                  <span class="spk-label">L-Surround</span>
+                </div>
+                <div class="speaker-source speaker-rs" data-speaker="rightSurround">
+                  <span class="spk-label">R-Surround</span>
+                </div>
+
+                <!-- Listener in the center -->
+                <div class="listener-head">
+                  <div class="ear left-ear"></div>
+                  <div class="ear right-ear"></div>
+                </div>
+              </div>
+
+              <div class="demo-controls">
+                <button id="btn-trigger-all-surround" class="btn-neon">Ping All Nodes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Roadside Platform Evolution -->
+      <section id="slide-4" class="slide">
+        <div class="slide-content split-layout">
+          <div class="info-pane">
+            <div class="badge">Development Timeline</div>
+            <h2>Roadside Dispatch Evolution</h2>
+            <p class="lead">The timeline of mechanic dispatch technology milestones.</p>
+            <div class="timeline-visual-card glass-card">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-text">
+                  <strong>Before 2010: Offline Systems</strong>
+                  <p>Physical business directories, paper catalogs, offline towing phone lines.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-text">
+                  <strong>2015: Static Business Pages</strong>
+                  <p>Web listings. Drivers search manually, explain coordinates, and request phone quotes.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-text">
+                  <strong>2020: Consolidated Portals</strong>
+                  <p>Consolidated booking portals, causing manual dispatcher assignment lags.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot-active"></div>
+                <div class="timeline-text">
+                  <strong>2026+: PitCrew Connect</strong>
+                  <p>Automated coordinate intake, identity vetting, and live responder dispatch tracking.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-pane center-pane-content">
+            <div class="timeline-highlight-card glass-card">
+              <div class="highlight-badge">2026 Innovation</div>
+              <h3>Automated Dispatch Matching</h3>
+              <p>PitCrew Connect bypasses traditional call-center brokers by matching broken-down coordinates directly to regional responders within a 12.5-minute ETA window.</p>
+              <div class="stats-grid">
+                <div class="stat-box">
+                  <div class="stat-val">12.5m</div>
+                  <div class="stat-label">Avg Response Time</div>
+                </div>
+                <div class="stat-box">
+                  <div class="stat-val">72%</div>
+                  <div class="stat-label">Fulfillment Boost</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Live Coordinate Tracking & Mapping -->
+      <section id="slide-5" class="slide">
+        <div class="slide-content split-layout">
+          <div class="info-pane">
+            <div class="badge">Object-Based Dispatch</div>
+            <h2>Dynamic Coordinate Objects</h2>
+            <p class="lead">Instead of fixed channels, PitCrew Connect maps active drivers and mechanics as real-time objects.</p>
+
+            <div class="feature-bullets">
+              <div class="bullet-item">
+                <div class="bullet-icon purple-bg">1</div>
+                <div>
+                  <strong>Live Geolocation Coordinates:</strong>
+                  <p>Each driver coordinates are tracked as a live coordinate node with bearing vectors.</p>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="bullet-icon cyan-bg">2</div>
+                <div>
+                  <strong>Real-Time ETA Matching:</strong>
+                  <p>As coordinate objects move, distance values update automatically on matching responder screens.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-pane">
+            <div class="demo-card glass-card">
+              <h3>Interactive Coordinate Inspector</h3>
+              <p class="demo-description">Drag the glowing Driver node on the grid to simulate dispatcher mapping.</p>
+
+              <!-- Drag Stage -->
+              <div class="soundstage object-stage" id="object-stage-container">
+                <div class="grid-overlay"></div>
+                <!-- Dynamic listener head (Mechanic Base) -->
+                <div class="listener-head absolute-center">
+                  <div class="ear left-ear"></div>
+                  <div class="ear right-ear"></div>
+                  <span class="head-label">Mechanic Hub</span>
+                </div>
+                <!-- Interactive Coordinate node -->
+                <div id="atmos-sound-object" class="draggable-object">
+                  <div class="object-core"></div>
+                  <div class="object-pulse"></div>
+                  <span class="obj-label">Driver Coords</span>
+                </div>
+              </div>
+
+              <div class="object-meta-stats">
+                <div>X Pos: <span id="val-atmos-x">0.0m</span></div>
+                <div>Y Pos: <span id="val-atmos-y">0.0m</span></div>
+                <div>Bearing: <span id="val-atmos-angle">0°</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Layered Architecture -->
+      <section id="slide-6" class="slide">
+        <div class="slide-content split-layout">
+          <div class="info-pane">
+            <div class="badge">System Layers</div>
+            <h2>Layered Architecture</h2>
+            <p class="lead">Platform layers separating client frontends, logic controllers, and database engines.</p>
+
+            <div class="feature-bullets">
+              <div class="bullet-item">
+                <div class="bullet-icon pink-bg">1</div>
+                <div>
+                  <strong>Client Frontend Tier:</strong>
+                  <p>HTML5, geolocation interfaces. Enables broken-down passengers to input details and send coordinates.</p>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="bullet-icon blue-bg">2</div>
+                <div>
+                  <strong>Database Storage Tier:</strong>
+                  <p>PostgreSQL ledger. Stores secure credentials, responder licenses, active match details, and job logs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-pane">
+            <div class="demo-card glass-card">
+              <h3>System Layer Inspector</h3>
+              <p class="demo-description">Click on any system layer on the right grid to view its operational role details.</p>
+
+              <div class="layer-visualizer-container">
+                <div class="layer-deck">
+                  <div class="layer-bar layer-bed-bar active" data-layer="bed">
+                    <span>Client Front-End (Drivers/Mechanics View)</span>
+                  </div>
+                  <div class="layer-bar layer-height-bar" data-layer="height">
+                    <span>Node.js / Express Backend (Logic Control)</span>
+                  </div>
+                  <div class="layer-bar layer-db-bar" data-layer="db">
+                    <span>PostgreSQL Database (Persistence Tier)</span>
+                  </div>
+                </div>
+                
+                <div class="layer-details-panel glass-card">
+                  <h4 id="layer-title">Client Front-End View</h4>
+                  <p id="layer-desc">The passenger-facing UI. Takes user breakdown details, fetches geolocation coordinates via browser APIs, and posts requests to dispatcher.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7: Mobile Availability & Radius Matching -->
+      <section id="slide-7" class="slide">
+        <div class="slide-content split-layout">
+          <div class="info-pane">
+            <div class="badge">Fulfillment Logic</div>
+            <h2>Radius Availability Matching</h2>
+            <p class="lead">Simulating how the Node server matches dispatch tickets to nearest responder radius coordinates.</p>
+
+            <div class="feature-bullets">
+              <div class="bullet-item">
+                <div class="bullet-icon purple-bg">1</div>
+                <div>
+                  <strong>Operational Proximity:</strong>
+                  <p>Requests are broadcasted to nearby responders in active states within matched coordinates.</p>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="bullet-icon cyan-bg">2</div>
+                <div>
+                  <strong>Dynamic Scaling:</strong>
+                  <p>Coordinates adapt to regional demand density peaks, ensuring fast dispatching response times.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-pane">
+            <div class="demo-card glass-card">
+              <h3>Proximity Range Simulator</h3>
+              <p class="demo-description">Trigger simulated mechanic dispatch orbits and watch the active response radar range sweep.</p>
+
+              <div class="soundstage height-stage" id="elevation-stage-container">
+                <!-- Outer matching circle -->
+                <div class="elevation-ring ring-overhead"></div>
+                <div class="elevation-ring ring-listener"></div>
+                
+                <!-- Dynamic responder coordinates -->
+                <div id="elevation-sound-node" class="sound-node elevation-node"></div>
+                
+                <div class="listener-head absolute-center">
+                  <div class="ear left-ear"></div>
+                  <div class="ear right-ear"></div>
+                  <span class="head-label">Driver Coords</span>
+                </div>
+              </div>
+
+              <div class="demo-controls">
+                <button id="btn-trigger-elevation" class="btn-neon">Start Dispatch Radar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 8: Under the Hood: Express API Gateway -->
+      <section id="slide-8" class="slide">
+        <div class="slide-content split-layout">
+          <div class="info-pane">
+            <div class="badge">Logic Architecture</div>
+            <h2>Under the Hood: The Dispatcher</h2>
+            <p class="lead">How coordinates and session authentication payloads route safely through server middleware.</p>
+
+            <div class="feature-bullets">
+              <div class="bullet-item">
+                <div class="bullet-icon pink-bg">1</div>
+                <div>
+                  <strong>Session Authentication:</strong>
+                  <p>Mechanic profiles log in using secure token headers, keeping dispatch coordinate routes secure.</p>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="bullet-icon blue-bg">2</div>
+                <div>
+                  <strong>Interactive Dispatch Wave:</strong>
+                  <p>Active job coordination maps coordinates dynamically, matching and locking responder dispatches.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-pane">
+            <div class="demo-card glass-card">
+              <h3>Real-Time Dispatch Dispatcher Wave</h3>
+              <p class="demo-description">Trigger dispatch matching sweep orbits on the coordinate stage.</p>
+
+              <div class="soundstage surround-stage" id="binaural-stage-container">
+                <div class="listener-head absolute-center">
+                  <div class="ear left-ear"></div>
+                  <div class="ear right-ear"></div>
+                </div>
+                <!-- Orbiting responder coordinate node -->
+                <div id="binaural-orbit-node" class="sound-node bin-node"></div>
+              </div>
+
+              <div class="demo-controls">
+                <button id="btn-trigger-binaural" class="btn-neon">Start Dispatch Orbit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 9: Security Verification & Vetting -->
+      <section id="slide-9" class="slide">
+        <div class="slide-content split-layout">
+          <div class="info-pane">
+            <div class="badge">Compliance Security</div>
+            <h2>Security & Vetting Controls</h2>
+            <p class="lead">Securing credentials and matching tickets across the backend Postgres store.</p>
+
+            <div class="feature-bullets">
+              <div class="bullet-item">
+                <div class="bullet-icon purple-bg">1</div>
+                <div>
+                  <strong>Mechanic Verification Pipeline:</strong>
+                  <p>License details and credentials undergo verification checklists before accounts are approved.</p>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="bullet-icon cyan-bg">2</div>
+                <div>
+                  <strong>Account Password Hashing:</strong>
+                  <p>On-disk user passwords are hashed using high-security bcryptjs, ensuring account records remain secure.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-pane center-pane-content">
+            <div class="compliance-vetting-card glass-card">
+              <h3>Vetting Audit Checklist</h3>
+              <ul class="checklist-list">
+                <li><span class="check-icon">✓</span> Trade License Authenticity Review</li>
+                <li><span class="check-icon">✓</span> Identity Credentials Verification</li>
+                <li><span class="check-icon">✓</span> Middleware API Route Restrictions</li>
+                <li><span class="check-icon">✓</span> Session Tokens and Password Hashing</li>
+              </ul>
+              <div class="highlight-badge">Hosted at: pitcrew-connect.onrender.com</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 10: Performance Metrics Comparison -->
+      <section id="slide-10" class="slide">
+        <div class="slide-content split-layout">
+          <div class="info-pane">
+            <div class="badge">Metrics Specs</div>
+            <h2>Speed & Efficiency Fulfillment</h2>
+            <p class="lead">Comparing roadside dispatcher response metrics across legacy and automated dispatch platforms.</p>
+
+            <div class="feature-bullets">
+              <div class="bullet-item">
+                <div class="bullet-icon pink-bg">1</div>
+                <div>
+                  <strong>Phone Towing Call:</strong>
+                  <p>45.0 mins response time average. Suffering from call-center matching queue lags.</p>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="bullet-icon blue-bg">2</div>
+                <div>
+                  <strong>PitCrew Connect App:</strong>
+                  <p>12.5 mins response time average. Dynamic GPS matching routing cuts dispatch lag by 72%.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-pane center-pane-content">
+            <div class="metrics-table-card glass-card">
+              <h3>Fulfillment benchmarks</h3>
+              <table class="specs-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Legacy Phone Call</th>
+                    <th>PitCrew Connect</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Dispatch Speed</td>
+                    <td>15-20 Mins</td>
+                    <td>2.4 Mins</td>
+                  </tr>
+                  <tr>
+                    <td>GPS Route Locking</td>
+                    <td>Approximate Street</td>
+                    <td>Live Coordinates</td>
+                  </tr>
+                  <tr>
+                    <td>Security Check</td>
+                    <td>None</td>
+                    <td>Identity Vetted</td>
+                  </tr>
+                  <tr>
+                    <td>Uptime Rate</td>
+                    <td>Office Hours</td>
+                    <td>99.98% 24-7</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 11: Thank You Slide -->
+      <section id="slide-11" class="slide">
+        <div class="slide-content title-layout conclusion-layout">
+          <div class="title-text-group text-center">
+            <div class="badge">Presented by Jai Akash T</div>
+            <h1 class="text-glow">THANK YOU</h1>
+            <p class="subtitle">Platform Live at: <strong>pitcrew-connect.onrender.com</strong></p>
+            
+            <div class="presenter-card glass-card centered-card" style="margin-top: 30px;">
+              <div class="presenter-name">Jai Akash T</div>
+              <div class="presenter-details">Register Number: 243115106037 | Class: ECE-3A</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer Dock Controls -->
+    <footer class="app-footer">
+      <div class="nav-brand">
+        <span class="brand-accent">PitCrew</span> Connect
+      </div>
+
+      <!-- Footer Menu Shortcuts -->
+      <div class="footer-shortcuts">
+        <span class="shortcut-tip">Magic Keys: S, M, A, G, I</span>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <div class="slide-navigator">
+        <button id="btn-prev-slide" class="btn-ctrl" disabled>&larr; Prev</button>
+        <div class="slide-indicators">
+          <!-- Populated by JS -->
+        </div>
+        <button id="btn-next-slide" class="btn-ctrl">Next &rarr;</button>
+      </div>
+
+      <div class="sound-control">
+        <button id="btn-fullscreen" class="btn-ctrl">Fullscreen</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Keyboard visual magic key overlay layer -->
   <div id="magic-effects-layer" style="position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden;"></div>
 
-  <!-- JS Scripts -->
-  <!-- GSAP Core -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <!-- Chart.js Core -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-  <!-- Three.js WebGL -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <!-- OrbitControls for Three.js camera rotation -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <!-- Particles.js Core -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-  <!-- Custom Scripts -->
-  <script src="js/main.js"></script>
-  <script src="js/animations.js"></script>
-  <script src="js/three-scene.js"></script>
-  <script src="js/charts.js"></script>
+  <!-- JavaScript Application -->
+  <script src="app.js"></script>
 </body>
+
 </html>
