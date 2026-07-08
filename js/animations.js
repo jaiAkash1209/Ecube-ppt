@@ -26,10 +26,10 @@ function initTypingLoop() {
   if (!typingText) return;
 
   const words = [
-    "High Bandwidth Memory",
-    "HBM4 Architecture",
-    "HBM4E Specifications",
-    "Powering AI accelerators"
+    "PitCrew Connect",
+    "On-Demand Mechanic Platform",
+    "Real-Time Roadside Dispatch",
+    "Vetted Vehicle Assistance"
   ];
 
   let wordIndex = 0;
