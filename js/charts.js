@@ -38,14 +38,14 @@ function initChartsController() {
     bandwidthChartInstance = new Chart(bandwidthCtx, {
       type: 'bar',
       data: {
-        labels: ['DDR5', 'GDDR7', 'HBM3E', 'HBM4', 'HBM4E'],
+        labels: ['Phone Call', 'Tow Broker', 'Insurance App', 'PitCrew Connect'],
         datasets: [{
-          data: [38.4, 192, 1228, 2048, 2457],
+          data: [45.0, 32.0, 24.5, 12.5],
           backgroundColor: gradient,
           borderColor: '#4285F4',
           borderWidth: 1.5,
           borderRadius: 8,
-          hoverBackgroundColor: '#D96BBA', // Shines pink on hover
+          hoverBackgroundColor: '#D96BBA',
           hoverBorderColor: '#D96BBA'
         }]
       },
